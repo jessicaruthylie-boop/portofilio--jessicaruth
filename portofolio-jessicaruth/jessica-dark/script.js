@@ -226,4 +226,3 @@ Object.entries(CONTACTS).forEach(([key, data]) => {
   link.querySelector("span").textContent = data.label || data.value;
   item.replaceWith(link);
 });
-dds;
