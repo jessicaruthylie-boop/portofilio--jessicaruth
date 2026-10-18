@@ -1187,8 +1187,9 @@ dialog p {
   flex: 0 0 150px;
 }
 .marquee.is-animated .marquee-track {
-  animation-duration: 100s;
+  animation-duration: 60s;
 }
+
 .tech-list span {
   white-space: nowrap;
   font-size: 12px;
