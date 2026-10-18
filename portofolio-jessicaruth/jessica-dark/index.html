@@ -4985,10 +4985,8 @@
 </section>
 
 
-<!-- ===============================
-     EDUCATION - ACADEMIC UNIVERSE
-     =============================== -->
 
+<!-- EDUCATION: Academic Universe -->
 <section
   id="education"
   class="section education"
@@ -4996,76 +4994,86 @@
 >
   <div class="section-heading reveal">
     <div>
-      <p class="eyebrow">01 / MY LEARNING JOURNEY</p>
+      <p class="eyebrow">
+        01 / MY LEARNING JOURNEY
+      </p>
       <h2 id="education-title">
         Academic Universe<span>.</span>
       </h2>
     </div>
 
-    <p>Two places. One continuous journey of learning.</p>
+    <p>
+      Two places. One continuous journey of learning.
+    </p>
   </div>
 
-  <div class="academic-universe">
-    <div class="universe-stage">
+  <div
+    class="au2"
+    aria-label="Interactive academic journey"
+  >
+    <div class="au2-stage">
 
-      <!-- Orbit rings -->
-      <div class="universe-ring universe-ring-outer"
-           aria-hidden="true"></div>
+      <!-- Orbit circles -->
+      <div
+        class="au2-ring au2-ring-outer"
+        aria-hidden="true"
+      ></div>
 
-      <div class="universe-ring universe-ring-inner"
-           aria-hidden="true"></div>
+      <div
+        class="au2-ring au2-ring-inner"
+        aria-hidden="true"
+      ></div>
 
       <!-- Center -->
-      <div class="universe-core">
-        <span class="universe-core-symbol"
-              aria-hidden="true">✳</span>
+      <div class="au2-center" aria-hidden="true">
+        <span class="au2-symbol">✳</span>
         <strong>Education</strong>
         <small>My Journey</small>
       </div>
 
-      <!-- High School -->
-      <div class="universe-orbiter universe-orbiter-school">
-        <div class="universe-satellite">
+      <!-- Methodist 5 -->
+      <div class="au2-orbiter au2-orbiter-one">
+        <div class="au2-satellite">
           <button
+            class="au2-choice"
             type="button"
-            class="universe-institution"
-            data-universe-school="methodist"
+            data-au2="methodist"
             aria-haspopup="dialog"
-            aria-controls="universe-modal"
+            aria-controls="au2-modal"
           >
-            <span class="universe-institution-index">
+            <span class="au2-index">
               01 / HIGH SCHOOL
             </span>
 
             <strong>SMAS Methodist 5</strong>
             <small>Medan</small>
 
-            <span class="universe-institution-link">
-              Explore ↗
+            <span class="au2-action">
+              View details ↗
             </span>
           </button>
         </div>
       </div>
 
-      <!-- University -->
-      <div class="universe-orbiter universe-orbiter-college">
-        <div class="universe-satellite">
+      <!-- Institut Teknologi Del -->
+      <div class="au2-orbiter au2-orbiter-two">
+        <div class="au2-satellite">
           <button
+            class="au2-choice"
             type="button"
-            class="universe-institution"
-            data-universe-school="del"
+            data-au2="del"
             aria-haspopup="dialog"
-            aria-controls="universe-modal"
+            aria-controls="au2-modal"
           >
-            <span class="universe-institution-index">
+            <span class="au2-index">
               02 / UNIVERSITY
             </span>
 
             <strong>Institut Teknologi Del</strong>
             <small>D3 Teknologi Komputer</small>
 
-            <span class="universe-institution-link">
-              Explore ↗
+            <span class="au2-action">
+              View details ↗
             </span>
           </button>
         </div>
@@ -5073,67 +5081,66 @@
 
     </div>
 
-    <p class="universe-hint">
-      SELECT AN INSTITUTION TO VIEW DETAILS
+    <p class="au2-hint">
+      SELECT AN INSTITUTION TO EXPLORE
     </p>
   </div>
 </section>
 
-<!-- Information and Google Maps modal -->
+<!-- Education Popup Modal -->
 <dialog
-  id="universe-modal"
-  class="universe-modal"
-  aria-labelledby="universe-modal-title"
+  id="au2-modal"
+  class="au2-modal"
+  aria-labelledby="au2-modal-name"
 >
-  <div class="universe-modal-header">
+  <div class="au2-modal-head">
     <div>
-      <p class="eyebrow" id="universe-modal-category">
-        EDUCATION
-      </p>
+      <p
+        id="au2-modal-type"
+        class="eyebrow"
+      ></p>
 
-      <h2 id="universe-modal-title"></h2>
-
-      <p id="universe-modal-program"></p>
+      <h2 id="au2-modal-name"></h2>
+      <p id="au2-modal-program"></p>
     </div>
 
     <button
-      id="universe-modal-close"
-      class="universe-modal-close"
       type="button"
-      aria-label="Close education details"
+      id="au2-modal-close"
+      class="au2-close"
+      aria-label="Tutup informasi"
     >
       &times;
     </button>
   </div>
 
+  <!-- Academic Data -->
   <div
-    id="universe-modal-details"
-    class="universe-modal-details"
+    id="au2-modal-stats"
+    class="au2-stats"
   ></div>
 
-  <div class="universe-map-label">
-    <span>INSTITUTION LOCATION</span>
-    <span>↗</span>
-  </div>
+  <!-- Map -->
+  <p class="au2-map-title">
+    INSTITUTION LOCATION
+  </p>
 
-  <div class="universe-map">
+  <div class="au2-map-wrap">
     <iframe
-      id="universe-map-frame"
-      title="Institution location"
+      id="au2-map"
+      title="Lokasi institusi pendidikan"
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
-      allowfullscreen
     ></iframe>
   </div>
 
   <a
-    id="universe-map-link"
-    class="universe-map-link"
-    href="#"
+    id="au2-map-link"
+    class="au2-map-link"
     target="_blank"
     rel="noopener noreferrer"
   >
-    Open in Google Maps ↗
+    Lihat Peta di Google Maps ↗
   </a>
 </dialog>
 
