@@ -1618,24 +1618,26 @@ dialog p {
 
 /* Technology cards */
 .technologies .tech-list li {
-  background: linear-gradient(145deg, #212b40, #151c2b);
-  border: 1px solid #ffa58626;
-  border-radius: 16px;
-
-  /* Tetap di dalam lebar item marquee */
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
   margin: 0;
-  padding: 18px 8px;
-
+  padding: 18px 10px;
   position: relative;
   overflow: visible;
-
   transition:
-    background 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
+.technologies .tech-list li:hover {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transform: translateY(-4px);
+  z-index: 5;
+}
 /* Neon glow on hover */
 .technologies .tech-list li:hover {
   background: linear-gradient(145deg, #30283d, #1d2538);
