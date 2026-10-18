@@ -130,3 +130,4 @@ buttons.forEach((button) => {
     showInfo(button.dataset.au2);
   });
 });
+<script src="education-side-panel.js" defer></script>;
