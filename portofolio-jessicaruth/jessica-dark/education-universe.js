@@ -1,133 +1,333 @@
-/* ====================================
-   ACADEMIC UNIVERSE INTERACTIONS
-   ==================================== */
+/* ==========================================
+   JESSICA.DEV
+   ACADEMIC UNIVERSE - INTERACTIVE EDUCATION
+   ========================================== */
 
 (() => {
-  const modal = document.getElementById("au2-modal");
-  const closeBtn = document.getElementById("au2-modal-close");
-  const map = document.getElementById("au2-map");
-  const mapLink = document.getElementById("au2-map-link");
-  const stats = document.getElementById("au2-modal-stats");
+  "use strict";
 
-  if (!modal || !closeBtn || !map || !mapLink || !stats) {
-    return;
-  }
+  /* ------------------------------------------
+     DATA PENDIDIKAN
+     ------------------------------------------ */
 
-  // Academic information
-  const records = {
+  const educationData = {
     methodist: {
-      type: "EDUCATION / 01 — HIGH SCHOOL",
+      category: "01 / HIGH SCHOOL",
       name: "SMAS Methodist 5 Medan",
       program: "Matematika & Ilmu Pengetahuan Alam",
+
       details: [
-        ["LEVEL", "Sekolah Menengah"],
+        ["LEVEL", "Senior High School"],
         ["MAJOR", "MIPA"],
-        ["CITY", "Medan"],
+        ["LOCATION", "Medan"],
       ],
-      query: "SMAS Methodist 5 Medan",
+
+      mapQuery: "SMAS Methodist 5 Medan",
     },
 
     del: {
-      type: "EDUCATION / 02 — UNIVERSITY",
+      category: "02 / UNIVERSITY",
       name: "Institut Teknologi Del",
       program: "D3 Teknologi Komputer",
+
       details: [
         ["DEGREE", "Diploma III"],
         ["SEMESTER", "05"],
         ["IPK", "3.02 / 4.00"],
       ],
-      query: "Institut Teknologi Del",
+
+      mapQuery: "Institut Teknologi Del",
     },
   };
 
-  let trigger = null;
+  /* ------------------------------------------
+     INITIALIZATION
+     ------------------------------------------ */
 
-  // Handle institution click
-  document.querySelectorAll("[data-au2]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const data = records[button.dataset.au2];
+  function initializeEducationUniverse() {
+    // Main Academic Universe container
+    const universe = document.getElementById("academic-universe");
 
-      if (!data) return;
+    if (!universe) {
+      console.warn("[Education] Academic Universe tidak ditemukan.");
+      return;
+    }
 
-      trigger = button;
+    // Institution buttons already inside orbit
+    const institutionButtons = universe.querySelectorAll(
+      ".au2-choice[data-au2]",
+    );
 
-      document.getElementById("au2-modal-type").textContent = data.type;
+    // Information panel
+    const infoPanel = document.getElementById("au2-info");
 
-      document.getElementById("au2-modal-name").textContent = data.name;
+    if (!infoPanel) {
+      console.error("[Education] Panel kiri #au2-info tidak ditemukan.");
+      return;
+    }
 
-      document.getElementById("au2-modal-program").textContent = data.program;
+    // Panel elements
+    const emptyState = infoPanel.querySelector(".au2-info-empty");
 
-      // Academic details
-      stats.replaceChildren();
+    const infoContent = infoPanel.querySelector(".au2-info-content");
 
-      data.details.forEach(([label, value]) => {
-        const block = document.createElement("div");
+    const infoCategory = document.getElementById("au2-info-category");
 
-        const heading = document.createElement("span");
+    const infoName = document.getElementById("au2-info-name");
 
-        const content = document.createElement("strong");
+    const infoProgram = document.getElementById("au2-info-program");
 
-        heading.className = "au2-stat-label";
-        content.className = "au2-stat-value";
+    const infoStats = document.getElementById("au2-info-stats");
 
-        heading.textContent = label;
-        content.textContent = value;
+    const infoMap = document.getElementById("au2-info-map-frame");
 
-        block.append(heading, content);
-        stats.append(block);
+    const infoMapLink = document.getElementById("au2-info-map-link");
+
+    const closeButton = document.getElementById("au2-info-close");
+
+    /* ----------------------------------------
+       VALIDATE ELEMENTS
+       ---------------------------------------- */
+
+    const requiredElements = {
+      institutionButtons: institutionButtons.length > 0,
+
+      emptyState,
+      infoContent,
+      infoCategory,
+      infoName,
+      infoProgram,
+      infoStats,
+      infoMap,
+      infoMapLink,
+      closeButton,
+    };
+
+    const missingElements = Object.entries(requiredElements)
+      .filter(([, element]) => !element)
+      .map(([name]) => name);
+
+    if (missingElements.length > 0) {
+      console.error(
+        "[Education] Elemen HTML belum lengkap:",
+        missingElements.join(", "),
+      );
+      return;
+    }
+
+    /* ----------------------------------------
+       STATE
+       ---------------------------------------- */
+
+    let activeEducation = null;
+
+    /* ----------------------------------------
+       GOOGLE MAPS
+       ---------------------------------------- */
+
+    function createMapUrls(location) {
+      const query = encodeURIComponent(location);
+
+      return {
+        embed: "https://maps.google.com/maps?q=" + query + "&output=embed",
+
+        external:
+          "https://www.google.com/maps/search/" + "?api=1&query=" + query,
+      };
+    }
+
+    /* ----------------------------------------
+       RENDER EDUCATION DETAILS
+       ---------------------------------------- */
+
+    function renderEducationDetails(details) {
+      // Clear previous details
+      infoStats.replaceChildren();
+
+      details.forEach(([label, value]) => {
+        const item = document.createElement("div");
+        item.className = "au2-info-stat";
+
+        const labelElement = document.createElement("span");
+
+        labelElement.className = "au2-info-stat-label";
+
+        labelElement.textContent = label;
+
+        const valueElement = document.createElement("strong");
+
+        valueElement.className = "au2-info-stat-value";
+
+        valueElement.textContent = value;
+
+        item.append(labelElement, valueElement);
+
+        infoStats.appendChild(item);
       });
+    }
 
-      // Google Maps
-      const query = encodeURIComponent(data.query);
+    /* ----------------------------------------
+       UPDATE ACTIVE INSTITUTION
+       ---------------------------------------- */
 
-      map.src = "https://maps.google.com/maps?q=" + query + "&output=embed";
+    function updateActiveInstitution(key) {
+      institutionButtons.forEach((button) => {
+        const isActive = button.dataset.au2 === key;
 
-      mapLink.href =
-        "https://www.google.com/maps/search/" + "?api=1&query=" + query;
+        button.setAttribute("aria-pressed", String(isActive));
 
-      // Open modal
-      if (!modal.open) {
-        modal.showModal();
+        button.classList.toggle("is-active", isActive);
+      });
+    }
+
+    /* ----------------------------------------
+       SHOW EDUCATION INFORMATION
+       ---------------------------------------- */
+
+    function showEducation(key) {
+      const data = educationData[key];
+
+      if (!data) {
+        console.warn("[Education] Data tidak ditemukan:", key);
+        return;
       }
 
-      closeBtn.focus();
+      // Save current selection
+      activeEducation = key;
+
+      // Update text information
+      infoCategory.textContent = data.category;
+
+      infoName.textContent = data.name;
+
+      infoProgram.textContent = data.program;
+
+      // Render details
+      renderEducationDetails(data.details);
+
+      // Generate Google Maps URLs
+      const mapUrls = createMapUrls(data.mapQuery);
+
+      infoMap.src = mapUrls.embed;
+      infoMapLink.href = mapUrls.external;
+
+      // Set appropriate iframe title
+      infoMap.title = "Peta lokasi " + data.name;
+
+      // Hide initial instruction
+      emptyState.hidden = true;
+
+      // Reveal academic information
+      infoContent.hidden = false;
+
+      // Pause rotating orbit
+      universe.classList.add("has-selection");
+
+      // Update selected institution
+      updateActiveInstitution(key);
+
+      // Restart panel entrance animation
+      infoContent.classList.remove("is-visible");
+
+      void infoContent.offsetWidth;
+
+      infoContent.classList.add("is-visible");
+
+      console.log("[Education] Menampilkan:", data.name);
+    }
+
+    /* ----------------------------------------
+       RESET EDUCATION INFORMATION
+       ---------------------------------------- */
+
+    function resetEducation() {
+      activeEducation = null;
+
+      // Hide information
+      infoContent.hidden = true;
+
+      // Show initial instruction
+      emptyState.hidden = false;
+
+      // Remove Google Maps iframe
+      infoMap.removeAttribute("src");
+
+      // Resume rotating orbit
+      universe.classList.remove("has-selection");
+
+      // Reset institution state
+      updateActiveInstitution(null);
+
+      infoContent.classList.remove("is-visible");
+
+      console.log("[Education] Panel ditutup.");
+    }
+
+    /* ----------------------------------------
+       INSTITUTION CLICK EVENTS
+       ---------------------------------------- */
+
+    institutionButtons.forEach((button) => {
+      button.setAttribute("aria-pressed", "false");
+
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const selectedInstitution = button.dataset.au2;
+
+        if (!selectedInstitution) return;
+
+        // Toggle selected institution
+        if (activeEducation === selectedInstitution) {
+          resetEducation();
+          return;
+        }
+
+        showEducation(selectedInstitution);
+      });
     });
-  });
 
-  // Close button
-  closeBtn.addEventListener("click", () => {
-    modal.close();
-  });
+    /* ----------------------------------------
+       CLOSE PANEL EVENT
+       ---------------------------------------- */
 
-  // Click outside popup
-  modal.addEventListener("click", (event) => {
-    if (event.target !== modal) return;
+    closeButton.addEventListener("click", () => {
+      resetEducation();
+    });
 
-    const box = modal.getBoundingClientRect();
+    /* ----------------------------------------
+       KEYBOARD SUPPORT
+       ---------------------------------------- */
 
-    const outside =
-      event.clientX < box.left ||
-      event.clientX > box.right ||
-      event.clientY < box.top ||
-      event.clientY > box.bottom;
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && activeEducation !== null) {
+        resetEducation();
+      }
+    });
 
-    if (outside) {
-      modal.close();
-    }
-  });
+    /* ----------------------------------------
+       INITIAL DISPLAY
+       ---------------------------------------- */
 
-  // Clean up after closing
-  modal.addEventListener("close", () => {
-    map.removeAttribute("src");
+    emptyState.hidden = false;
+    infoContent.hidden = true;
 
-    if (trigger && trigger.isConnected) {
-      trigger.focus({ preventScroll: true });
-    }
-  });
+    infoMap.removeAttribute("src");
+
+    universe.classList.remove("has-selection");
+
+    console.log("[Education] Academic Universe berhasil diinisialisasi.");
+  }
+
+  /* ------------------------------------------
+     RUN AFTER DOM IS READY
+     ------------------------------------------ */
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeEducationUniverse, {
+      once: true,
+    });
+  } else {
+    initializeEducationUniverse();
+  }
 })();
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    showInfo(button.dataset.au2);
-  });
-});
-<script src="education-side-panel.js" defer></script>;
