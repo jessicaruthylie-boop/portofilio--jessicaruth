@@ -1,10 +1,6 @@
 <!doctype html>
 <html lang="id">
   <head>
-    <script src="script.js" defer></script>
-    <script src="education-universe.js" defer></script>
-    <link rel="stylesheet" href="education-universe.css" />
-    <script src="education-universe.js" defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
@@ -13,7 +9,149 @@
     />
     <title>Jessica.dev — Personal Portfolio</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="education-universe.css" />
     <script src="script.js" defer></script>
+    <script src="education-universe.js" defer></script>
+    <style>
+      /* Education side panel layout; other website sections are unchanged. */
+      #education .au2-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        align-items: center;
+        gap: clamp(24px, 5vw, 76px);
+        min-height: 560px;
+      }
+      #education .au2-info {
+        min-width: 0;
+        border-left: 2px solid #ffa58670;
+        padding: 25px 0 25px 26px;
+        text-align: left;
+      }
+      #education .au2-info-empty > span,
+      #education .au2-info-top > span,
+      #education .au2-info-location-label {
+        color: #ffa586;
+        letter-spacing: 1.5px;
+        font-size: 11px;
+      }
+      #education .au2-info h3 {
+        color: #fff1e9;
+        font-size: clamp(22px, 2.4vw, 32px);
+        line-height: 1.22;
+        margin: 17px 0 12px;
+      }
+      #education .au2-accent {
+        color: #ffa586;
+      }
+      #education .au2-info p {
+        color: #adbacd;
+        font-size: 13px;
+        line-height: 1.8;
+      }
+      #education .au2-info-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      #education #au2-info-close {
+        background: transparent;
+        border: 0;
+        color: #fff1e9;
+        font-size: 27px;
+        cursor: pointer;
+      }
+      #education #au2-info-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin: 22px 0;
+        padding: 16px 0;
+        border-block: 1px solid #ffffff25;
+      }
+      #education .au2-info-stat-label {
+        display: block;
+        color: #aeb8c9;
+        font:
+          10px Consolas,
+          monospace;
+        margin-bottom: 8px;
+      }
+      #education .au2-info-stat-value {
+        display: block;
+        color: #fff1e9;
+        font-size: 13px;
+        overflow-wrap: anywhere;
+      }
+      #education .au2-info-map {
+        height: 185px;
+        border-radius: 9px;
+        border: 1px solid #ffffff24;
+        overflow: hidden;
+      }
+      #education .au2-info-map iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      #education #au2-info-map-link {
+        display: inline-block;
+        color: #ffa586;
+        font-size: 13px;
+        margin-top: 12px;
+      }
+      #education .au2-info-content[hidden],
+      #education .au2-info-empty[hidden] {
+        display: none !important;
+      }
+      #education .au2-orbit-area {
+        min-width: 0;
+      }
+      #education .au2-ring,
+      #education .au2-center {
+        pointer-events: none;
+      }
+      #education .au2-orbiter {
+        z-index: 5;
+      }
+      #education .au2-choice {
+        cursor: pointer;
+        position: relative;
+        z-index: 6;
+        pointer-events: auto;
+      }
+      #education .au2-choice:focus-visible {
+        outline: 2px solid #ffa586;
+        outline-offset: 5px;
+      }
+      #education .au2-choice[aria-pressed="true"] strong {
+        color: #ffa586;
+      }
+      #education .au2.has-selection .au2-orbiter,
+      #education .au2.has-selection .au2-satellite,
+      #education .au2.has-selection .au2-choice {
+        animation-play-state: paused !important;
+      }
+      @media (max-width: 900px) {
+        #education .au2-layout {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+        #education .au2-orbit-area {
+          order: 1;
+        }
+        #education .au2-info {
+          order: 2;
+          margin-top: 14px;
+        }
+      }
+      @media (max-width: 460px) {
+        #education #au2-info-stats {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
   </head>
   <body>
     <a class="skip" href="#main">Lewati navigasi</a>
@@ -4903,195 +5041,113 @@
             </div>
           </div>
         </section>
-        
-<!-- EDUCATION SECTION -->
-<section
-  id="education"
-  class="section education"
-  aria-labelledby="education-title"
->
-  <div class="section-heading reveal">
-    <div>
-      <p class="eyebrow">01 / MY LEARNING JOURNEY</p>
 
-<!-- EDUCATION: Academic Universe -->
-<section
-  id="education"
-  class="section education"
-  aria-labelledby="education-title"
->
-  <div class="section-heading reveal">
-    </div>
-
-    </div>
-
-  <div
-    class="au2"
-    aria-label="Interactive academic journey"
-  >
-    <div class="au2-stage">
-
-      <!-- Orbit circles -->
-      <div
-        class="au2-ring au2-ring-outer"
-        aria-hidden="true"
-      ></div>
-
-      <div
-        class="au2-ring au2-ring-inner"
-        aria-hidden="true"
-      ></div>
-
-      <!-- Center -->
-      <div class="au2-center" aria-hidden="true">
-        <span class="au2-symbol">✳</span>
-        <strong>Education</strong>
-        <small>My Journey</small>
-      </div>
-
-<!-- METHODIST 5 -->
-<div class="au2-orbiter au2-orbiter-one">
-  <div class="au2-satellite">
-    <button
-      type="button"
-      class="au2-choice"
-      data-au2="methodist"
-      aria-pressed="false"
-    >
-      <span class="au2-index">01 / HIGH SCHOOL</span>
-      <strong>SMAS Methodist 5</strong>
-      <small>Medan</small>
-      <span class="au2-action">View details ↗</span>
-    </button>
-  </div>
-</div>
-
-<!-- INSTITUT TEKNOLOGI DEL -->
-<div class="au2-orbiter au2-orbiter-two">
-  <div class="au2-satellite">
-    <button
-      type="button"
-      class="au2-choice"
-      data-au2="del"
-      aria-pressed="false"
-    >
-      <span class="au2-index">02 / UNIVERSITY</span>
-      <strong>Institut Teknologi Del</strong>
-      <small>D3 Teknologi Komputer</small>
-      <span class="au2-action">View details ↗</span>
-    </button>
-  </div>
-</div>
-    </div>
-
-    <p class="au2-hint">
-      SELECT AN INSTITUTION TO EXPLORE
-    </p>
-  </div>
-</section>
-
-<!-- Education Popup Modal -->
-<dialog
-  id="au2-modal"
-  class="au2-modal"
-  aria-labelledby="au2-modal-name"
->
-  <div class="au2-modal-head">
-    <div>
-      <p
-        id="au2-modal-type"
-        class="eyebrow"
-      ></p>
-
-      <h2 id="au2-modal-name"></h2>
-      <p id="au2-modal-program"></p>
-    </div>
-
-    <button
-      type="button"
-      id="au2-modal-close"
-      class="au2-close"
-      aria-label="Tutup informasi"
-    >
-      &times;
-    </button>
-  </div>
-
-  <!-- Academic Data -->
-  <div
-    id="au2-modal-stats"
-    class="au2-stats"
-  ></div>
-
-  <!-- Map -->
-  <p class="au2-map-title">
-    INSTITUTION LOCATION
-  </p>
-
-  <div class="au2-map-wrap">
-    <iframe
-      id="au2-map"
-      title="Lokasi institusi pendidikan"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
-  </div>
-
-  <a
-    id="au2-map-link"
-    class="au2-map-link"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Lihat Peta di Google Maps ↗
-  </a>
-</dialog>
-
+        <!-- EDUCATION: Interactive Academic Universe -->
+        <section
+          id="education"
+          class="section education"
+          aria-labelledby="education-title"
+        >
           <div class="section-heading reveal">
             <div>
               <p class="eyebrow">01 / MY LEARNING JOURNEY</p>
-              <h2 id="education-title">Education<span>.</span></h2>
+              <h2 id="education-title">Academic Universe<span>.</span></h2>
             </div>
-            <p>Setiap langkah adalah kesempatan belajar.</p>
+            <p>Two places. One continuous journey of learning.</p>
           </div>
-          <div class="two-grid">
-            <article class="card reveal education-card">
-              <div class="card-top">
-                <span class="card-icon" aria-hidden="true">⌘</span
-                ><span class="badge">Diploma III</span>
+
+          <div
+            class="au2"
+            id="academic-universe"
+            aria-label="Interactive academic journey"
+          >
+            <div class="au2-layout">
+              <!-- Information appears here after clicking either orbit institution -->
+              <aside id="au2-info" class="au2-info" aria-live="polite">
+                <div class="au2-info-empty">
+                  <span>ACADEMIC PROFILE / MY JOURNEY</span>
+                  <h3>Explore my journey<span class="au2-accent">.</span></h3>
+                  <p>
+                    Click an institution in the orbit to explore my academic
+                    journey and its location.
+                  </p>
+                </div>
+                <div class="au2-info-content" hidden>
+                  <div class="au2-info-top">
+                    <span id="au2-info-category"></span>
+                    <button
+                      id="au2-info-close"
+                      type="button"
+                      aria-label="Tutup informasi"
+                    >
+                      &times;
+                    </button>
+                  </div>
+                  <h3 id="au2-info-name"></h3>
+                  <p id="au2-info-program"></p>
+                  <div id="au2-info-stats"></div>
+                  <p class="au2-info-location-label">INSTITUTION LOCATION</p>
+                  <div class="au2-info-map">
+                    <iframe
+                      id="au2-info-map-frame"
+                      title="Lokasi institusi"
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
+                  <a
+                    id="au2-info-map-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Lihat Peta di Google Maps ↗</a
+                  >
+                </div>
+              </aside>
+
+              <!-- Existing rotating orbit: the two institution labels are the only selectors -->
+              <div class="au2-orbit-area">
+                <div class="au2-stage">
+                  <div class="au2-ring au2-ring-outer" aria-hidden="true"></div>
+                  <div class="au2-ring au2-ring-inner" aria-hidden="true"></div>
+                  <div class="au2-center" aria-hidden="true">
+                    <span class="au2-symbol">✳</span>
+                    <strong>Education</strong>
+                    <small>My Journey</small>
+                  </div>
+                  <div class="au2-orbiter au2-orbiter-one">
+                    <div class="au2-satellite">
+                      <button
+                        type="button"
+                        class="au2-choice"
+                        data-au2="methodist"
+                        aria-pressed="false"
+                      >
+                        <span class="au2-index">01 / HIGH SCHOOL</span>
+                        <strong>SMAS Methodist 5</strong>
+                        <small>Medan</small>
+                        <span class="au2-action">View details ↗</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="au2-orbiter au2-orbiter-two">
+                    <div class="au2-satellite">
+                      <button
+                        type="button"
+                        class="au2-choice"
+                        data-au2="del"
+                        aria-pressed="false"
+                      >
+                        <span class="au2-index">02 / UNIVERSITY</span>
+                        <strong>Institut Teknologi Del</strong>
+                        <small>D3 Teknologi Komputer</small>
+                        <span class="au2-action">View details ↗</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <p class="au2-hint">SELECT AN INSTITUTION TO EXPLORE</p>
               </div>
-              <p class="mono period">Semester 5</p>
-              <h3>Institut Teknologi Del</h3>
-              <ul class="education-details">
-                <li>D3 Teknologi Komputer</li>
-                <li>IPK = 3.02/4.00</li>
-              </ul>
-              <a
-                class="map-button"
-                href="https://www.bing.com/maps/directions?ty=0&amp;v=2&amp;sV=1&amp;rtp=%7Epos.2.385692596435547_99.14778137207031__Toba%2520Digital%2520Valley%2520Institut%2520Teknologi%2520Del_&amp;cp=2.498531%7E98.979323&amp;lvl=10.9&amp;style=r"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Lihat Peta <span aria-hidden="true">↗</span></a
-              >
-            </article>
-            <article class="card reveal education-card">
-              <div class="card-top">
-                <span class="card-icon" aria-hidden="true">⌁</span
-                ><span class="badge">Sekolah Menengah</span>
-              </div>
-              <p class="mono period">MIPA</p>
-              <h3>SMAS Methodist 5 Medan</h3>
-              <ul class="education-details">
-                <li>Matematika &amp; Ilmu Pengetahuan Alam</li>
-              </ul>
-              <a
-                class="map-button"
-                href="https://www.bing.com/maps/directions?ty=0&amp;v=2&amp;sV=1&amp;rtp=%7Epos.3.606376886367798_98.65801239013672__Perguruan%2520Kristen%2520Methodist%25205_&amp;cp=3.606377%7E98.658010&amp;lvl=16&amp;style=r"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Lihat Peta <span aria-hidden="true">↗</span></a
-              >
-            </article>
+            </div>
           </div>
         </section>
       </section>
