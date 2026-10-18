@@ -350,11 +350,15 @@ button:focus-visible,
   color: var(--muted);
 }
 .technologies {
-  width: min(1600px, calc(100vw - 64px));
-  max-width: none;
+  width: calc(100vw - 64px);
+  max-width: 1600px;
 
-  margin-left: 50%;
+  position: relative;
+  left: 50%;
   transform: translateX(-50%);
+
+  margin-left: 0;
+  margin-right: 0;
 
   padding: 35px 0 30px;
   border-block: 1px solid var(--line);
