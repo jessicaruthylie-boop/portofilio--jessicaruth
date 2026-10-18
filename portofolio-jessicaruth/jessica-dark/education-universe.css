@@ -504,3 +504,73 @@
 .au2-choice:focus:not(:focus-visible) {
   outline: none;
 }
+
+/* ========================================
+   ACADEMIC UNIVERSE INTERACTION FIX
+   ======================================== */
+
+/* Allow clicking institution labels */
+.au2-orbiter {
+  z-index: 5;
+}
+
+.au2-satellite {
+  pointer-events: none;
+}
+
+.au2-choice {
+  position: relative;
+  z-index: 6;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Decorative elements must not block clicks */
+.au2-ring,
+.au2-center {
+  pointer-events: none;
+}
+
+/* Pause orbit when information is selected */
+.au2.has-selection .au2-orbiter,
+.au2.has-selection .au2-choice {
+  animation-play-state: paused !important;
+}
+
+/* Active institution appearance */
+.au2-choice.is-active strong {
+  color: #ffa586;
+}
+
+.au2-choice.is-active {
+  border-bottom-color: #ffa586;
+}
+
+/* Hide unused panel content */
+.au2-info-empty[hidden],
+.au2-info-content[hidden] {
+  display: none !important;
+}
+
+/* Information entrance */
+.au2-info-content.is-visible {
+  animation: au2-panel-reveal 0.35s ease both;
+}
+
+@keyframes au2-panel-reveal {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .au2-info-content.is-visible {
+    animation: none;
+  }
+}
