@@ -226,3 +226,148 @@ Object.entries(CONTACTS).forEach(([key, data]) => {
   link.querySelector("span").textContent = data.label || data.value;
   item.replaceWith(link);
 });
+
+/* ========================================
+   ACADEMIC UNIVERSE 2.0 INTERACTIONS
+   ======================================== */
+
+(() => {
+  "use strict";
+
+  const universeData = {
+    methodist: {
+      category: "EDUCATION / 01 - HIGH SCHOOL",
+      name: "SMAS Methodist 5 Medan",
+      program: "Matematika & Ilmu Pengetahuan Alam",
+      details: [
+        ["LEVEL", "Senior High School"],
+        ["MAJOR", "MIPA"],
+        ["LOCATION", "Medan"],
+      ],
+      location: "SMAS Methodist 5 Medan",
+    },
+
+    del: {
+      category: "EDUCATION / 02 - UNIVERSITY",
+      name: "Institut Teknologi Del",
+      program: "Diploma III - Teknologi Komputer",
+      details: [
+        ["DEGREE", "D3"],
+        ["SEMESTER", "05"],
+        ["IPK", "3.02 / 4.00"],
+      ],
+      location: "Institut Teknologi Del",
+    },
+  };
+
+  const modal = document.getElementById("universe-modal");
+
+  const closeButton = document.getElementById("universe-modal-close");
+
+  const mapFrame = document.getElementById("universe-map-frame");
+
+  const mapLink = document.getElementById("universe-map-link");
+
+  const detailContainer = document.getElementById("universe-modal-details");
+
+  const buttons = document.querySelectorAll("[data-universe-school]");
+
+  if (!modal || !closeButton || !mapFrame || !mapLink || !detailContainer) {
+    console.warn("Academic Universe: required HTML not found.");
+    return;
+  }
+
+  let lastTrigger = null;
+
+  function openUniverseModal(key, button) {
+    const school = universeData[key];
+
+    if (!school) return;
+
+    lastTrigger = button;
+
+    document.getElementById("universe-modal-category").textContent =
+      school.category;
+
+    document.getElementById("universe-modal-title").textContent = school.name;
+
+    document.getElementById("universe-modal-program").textContent =
+      school.program;
+
+    // Academic information
+    detailContainer.replaceChildren();
+
+    school.details.forEach(([label, value]) => {
+      const item = document.createElement("div");
+
+      const labelElement = document.createElement("span");
+
+      const valueElement = document.createElement("strong");
+
+      labelElement.className = "universe-detail-label";
+
+      valueElement.className = "universe-detail-value";
+
+      labelElement.textContent = label;
+      valueElement.textContent = value;
+
+      item.append(labelElement, valueElement);
+      detailContainer.appendChild(item);
+    });
+
+    // Google Maps URL
+    const query = encodeURIComponent(school.location);
+
+    mapFrame.src = "https://maps.google.com/maps?q=" + query + "&output=embed";
+
+    mapLink.href =
+      "https://www.google.com/maps/search/" + "?api=1&query=" + query;
+
+    // Open native modal
+    if (!modal.open) {
+      modal.showModal();
+    }
+
+    closeButton.focus();
+  }
+
+  // Institution click events
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      openUniverseModal(button.dataset.universeSchool, button);
+    });
+  });
+
+  // Close button
+  closeButton.addEventListener("click", () => {
+    modal.close();
+  });
+
+  // Close when clicking outside modal
+  modal.addEventListener("click", (event) => {
+    if (event.target !== modal) return;
+
+    const rect = modal.getBoundingClientRect();
+
+    const outside =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
+
+    if (outside) modal.close();
+  });
+
+  // After modal is closed
+  modal.addEventListener("close", () => {
+    // Stop embedded Google Maps
+    mapFrame.removeAttribute("src");
+
+    // Return keyboard focus
+    if (lastTrigger) {
+      lastTrigger.focus();
+    }
+  });
+
+  // Escape key is handled by native <dialog>
+})();
