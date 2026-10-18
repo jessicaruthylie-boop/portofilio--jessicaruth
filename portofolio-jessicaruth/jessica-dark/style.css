@@ -350,24 +350,38 @@ button:focus-visible,
   color: var(--muted);
 }
 .technologies {
-  width: calc(100vw - 64px);
-  max-width: 1600px;
+  width: min(1600px, calc(100vw - 64px));
+  max-width: none;
+
+  margin-left: 50%;
+  translate: -50% 0;
 
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-
-  margin-left: 0;
-  margin-right: 0;
+  left: auto;
 
   padding: 35px 0 30px;
   border-block: 1px solid var(--line);
 }
+.technologies {
+  width: min(1600px, calc(100vw - 64px));
+  max-width: none;
+
+  margin-left: 50%;
+  translate: -50% 0;
+
+  position: relative;
+  left: auto;
+
+  padding: 35px 0 30px;
+  border-block: 1px solid var(--line);
+}
+
 .technologies .small-heading {
   width: min(1140px, 100%);
   margin-inline: auto;
   padding-inline: 0;
 }
+
 .section-heading {
   display: flex;
   justify-content: space-between;
@@ -446,7 +460,7 @@ button:focus-visible,
 }
 .marquee.is-animated .marquee-track {
   max-width: none;
-  animation: marquee 28s linear infinite;
+  animation: marquee 100s linear infinite;
 }
 .marquee.is-animated .tech-list {
   width: 1140px;
