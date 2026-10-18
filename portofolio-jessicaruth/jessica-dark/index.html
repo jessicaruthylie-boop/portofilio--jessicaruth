@@ -4984,45 +4984,142 @@
   </div>
 </section>
 
-<!-- EDUCATION MODAL -->
-<dialog
-  id="education-modal"
-  class="education-modal"
-  aria-labelledby="education-modal-title"
+
+<!-- ===============================
+     EDUCATION - ACADEMIC UNIVERSE
+     =============================== -->
+
+<section
+  id="education"
+  class="section education"
+  aria-labelledby="education-title"
 >
-  <div class="education-modal-header">
+  <div class="section-heading reveal">
     <div>
-      <p class="eyebrow" id="education-modal-type">
-        EDUCATION / 01
+      <p class="eyebrow">01 / MY LEARNING JOURNEY</p>
+      <h2 id="education-title">
+        Academic Universe<span>.</span>
+      </h2>
+    </div>
+
+    <p>Two places. One continuous journey of learning.</p>
+  </div>
+
+  <div class="academic-universe">
+    <div class="universe-stage">
+
+      <!-- Orbit rings -->
+      <div class="universe-ring universe-ring-outer"
+           aria-hidden="true"></div>
+
+      <div class="universe-ring universe-ring-inner"
+           aria-hidden="true"></div>
+
+      <!-- Center -->
+      <div class="universe-core">
+        <span class="universe-core-symbol"
+              aria-hidden="true">✳</span>
+        <strong>Education</strong>
+        <small>My Journey</small>
+      </div>
+
+      <!-- High School -->
+      <div class="universe-orbiter universe-orbiter-school">
+        <div class="universe-satellite">
+          <button
+            type="button"
+            class="universe-institution"
+            data-universe-school="methodist"
+            aria-haspopup="dialog"
+            aria-controls="universe-modal"
+          >
+            <span class="universe-institution-index">
+              01 / HIGH SCHOOL
+            </span>
+
+            <strong>SMAS Methodist 5</strong>
+            <small>Medan</small>
+
+            <span class="universe-institution-link">
+              Explore ↗
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- University -->
+      <div class="universe-orbiter universe-orbiter-college">
+        <div class="universe-satellite">
+          <button
+            type="button"
+            class="universe-institution"
+            data-universe-school="del"
+            aria-haspopup="dialog"
+            aria-controls="universe-modal"
+          >
+            <span class="universe-institution-index">
+              02 / UNIVERSITY
+            </span>
+
+            <strong>Institut Teknologi Del</strong>
+            <small>D3 Teknologi Komputer</small>
+
+            <span class="universe-institution-link">
+              Explore ↗
+            </span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="universe-hint">
+      SELECT AN INSTITUTION TO VIEW DETAILS
+    </p>
+  </div>
+</section>
+
+<!-- Information and Google Maps modal -->
+<dialog
+  id="universe-modal"
+  class="universe-modal"
+  aria-labelledby="universe-modal-title"
+>
+  <div class="universe-modal-header">
+    <div>
+      <p class="eyebrow" id="universe-modal-category">
+        EDUCATION
       </p>
 
-      <h2 id="education-modal-title"></h2>
+      <h2 id="universe-modal-title"></h2>
 
-      <p id="education-modal-program"></p>
+      <p id="universe-modal-program"></p>
     </div>
 
     <button
+      id="universe-modal-close"
+      class="universe-modal-close"
       type="button"
-      class="education-modal-close"
-      id="education-modal-close"
       aria-label="Close education details"
     >
       &times;
     </button>
   </div>
 
-  <div class="education-modal-details"
-       id="education-modal-details"></div>
+  <div
+    id="universe-modal-details"
+    class="universe-modal-details"
+  ></div>
 
-  <div class="education-map-heading">
+  <div class="universe-map-label">
     <span>INSTITUTION LOCATION</span>
     <span>↗</span>
   </div>
 
-  <div class="education-map">
+  <div class="universe-map">
     <iframe
-      id="education-map-frame"
-      title="Education institution location"
+      id="universe-map-frame"
+      title="Institution location"
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
       allowfullscreen
@@ -5030,8 +5127,8 @@
   </div>
 
   <a
-    id="education-map-link"
-    class="education-map-link"
+    id="universe-map-link"
+    class="universe-map-link"
     href="#"
     target="_blank"
     rel="noopener noreferrer"
