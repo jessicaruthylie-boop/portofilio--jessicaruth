@@ -1187,7 +1187,7 @@ dialog p {
   flex: 0 0 150px;
 }
 .marquee.is-animated .marquee-track {
-  animation-duration: 60s;
+  animation-duration: 40s;
 }
 
 .tech-list span {
@@ -1578,5 +1578,138 @@ dialog p {
 
   .mini-gallery {
     grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   JESSICA.DEV - NEON TECH SHOWCASE
+   ========================================= */
+
+/* Section heading */
+.technologies {
+  padding-top: 45px;
+  padding-bottom: 50px;
+  isolation: isolate;
+}
+
+.technologies .small-heading {
+  margin-bottom: 24px;
+}
+
+.technologies .small-heading h2 {
+  font-size: clamp(24px, 2.5vw, 34px);
+  letter-spacing: -1px;
+  color: #fff1e9;
+}
+
+/* Marquee */
+.technologies .marquee {
+  width: 100%;
+  overflow: hidden;
+  padding: 12px 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}
+
+/* Technology cards */
+.technologies .tech-list li {
+  background: linear-gradient(145deg, #212b40, #151c2b);
+  border: 1px solid #ffa58626;
+  border-radius: 16px;
+
+  /* Tetap di dalam lebar item marquee */
+  margin: 0;
+  padding: 18px 8px;
+
+  position: relative;
+  overflow: visible;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Neon glow on hover */
+.technologies .tech-list li:hover {
+  background: linear-gradient(145deg, #30283d, #1d2538);
+
+  border-color: #ffa586;
+
+  box-shadow:
+    0 0 12px #ffa58655,
+    0 0 28px #ffa58630,
+    inset 0 0 12px #ffa58615;
+
+  transform: translateY(-5px);
+  z-index: 5;
+}
+
+/* Logo glow */
+.technologies .tech-icon svg {
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.technologies .tech-list li:hover .tech-icon svg {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 10px #ffa58690);
+}
+
+/* Text neon */
+.technologies .tech-list li > span:last-child {
+  font-size: 12px;
+  color: #c4cede;
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.technologies .tech-list li:hover > span:last-child {
+  color: #ffa586;
+  text-shadow: 0 0 10px #ffa58680;
+}
+
+/* Marquee animation */
+.technologies .marquee.is-animated .marquee-track {
+  animation-duration: 45s;
+  animation-timing-function: linear;
+}
+
+.technologies .marquee-reverse.is-animated .marquee-track {
+  animation-direction: reverse;
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+  .technologies {
+    padding-top: 30px;
+    padding-bottom: 35px;
+  }
+
+  .technologies .tech-list li {
+    padding: 14px 6px;
+    border-radius: 12px;
+  }
+
+  .technologies .tech-icon,
+  .technologies .tech-icon svg {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .technologies .tech-list li,
+  .technologies .tech-icon svg {
+    transition: none;
   }
 }
