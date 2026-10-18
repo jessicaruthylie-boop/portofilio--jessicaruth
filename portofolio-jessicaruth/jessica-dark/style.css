@@ -359,7 +359,9 @@ button:focus-visible,
   padding: 35px 0 30px;
   border-block: 1px solid var(--line);
 }
-
+.technologies .small-heading {
+  padding-inline: 20px;
+}
 .small-heading,
 .section-heading {
   display: flex;
