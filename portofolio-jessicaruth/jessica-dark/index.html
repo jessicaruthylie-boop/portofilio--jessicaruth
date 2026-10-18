@@ -4899,11 +4899,147 @@
             </div>
           </div>
         </section>
-        <section
-          id="education"
-          class="section education"
-          aria-labelledby="education-title"
-        >
+        
+<!-- EDUCATION SECTION -->
+<section
+  id="education"
+  class="section education"
+  aria-labelledby="education-title"
+>
+  <div class="section-heading reveal">
+    <div>
+      <p class="eyebrow">01 / MY LEARNING JOURNEY</p>
+      <h2 id="education-title">
+        My Learning Orbit<span>.</span>
+      </h2>
+    </div>
+
+    <p>
+      Explore the places that shaped my academic journey.
+    </p>
+  </div>
+
+  <div class="education-orbit">
+    <div class="orbit-stage">
+
+      <!-- Animated orbit rings -->
+      <div class="orbit-ring orbit-ring-outer"
+           aria-hidden="true"></div>
+
+      <div class="orbit-ring orbit-ring-inner"
+           aria-hidden="true"></div>
+
+      <!-- Center circle -->
+      <div class="orbit-center">
+        <span class="orbit-center-mark"
+              aria-hidden="true">✳</span>
+        <strong>Education</strong>
+        <small>My Journey</small>
+      </div>
+
+      <!-- Methodist 5 -->
+      <button
+        type="button"
+        class="orbit-school orbit-institution"
+        data-education="methodist"
+        aria-haspopup="dialog"
+        aria-controls="education-modal"
+      >
+        <span class="orbit-number">01 / HIGH SCHOOL</span>
+        <span class="orbit-name">
+          SMAS Methodist 5
+        </span>
+        <span class="orbit-institution-sub">Medan</span>
+        <span class="orbit-open">View details ↗</span>
+      </button>
+
+      <!-- Institut Teknologi Del -->
+      <button
+        type="button"
+        class="orbit-college orbit-institution"
+        data-education="del"
+        aria-haspopup="dialog"
+        aria-controls="education-modal"
+      >
+        <span class="orbit-number">02 / UNIVERSITY</span>
+        <span class="orbit-name">
+          Institut Teknologi Del
+        </span>
+        <span class="orbit-institution-sub">
+          D3 Teknologi Komputer
+        </span>
+        <span class="orbit-open">View details ↗</span>
+      </button>
+
+      <!-- Decorative orbit points -->
+      <span class="orbit-point point-one"
+            aria-hidden="true"></span>
+      <span class="orbit-point point-two"
+            aria-hidden="true"></span>
+    </div>
+
+    <p class="orbit-hint">
+      SELECT AN INSTITUTION TO EXPLORE
+    </p>
+  </div>
+</section>
+
+<!-- EDUCATION MODAL -->
+<dialog
+  id="education-modal"
+  class="education-modal"
+  aria-labelledby="education-modal-title"
+>
+  <div class="education-modal-header">
+    <div>
+      <p class="eyebrow" id="education-modal-type">
+        EDUCATION / 01
+      </p>
+
+      <h2 id="education-modal-title"></h2>
+
+      <p id="education-modal-program"></p>
+    </div>
+
+    <button
+      type="button"
+      class="education-modal-close"
+      id="education-modal-close"
+      aria-label="Close education details"
+    >
+      &times;
+    </button>
+  </div>
+
+  <div class="education-modal-details"
+       id="education-modal-details"></div>
+
+  <div class="education-map-heading">
+    <span>INSTITUTION LOCATION</span>
+    <span>↗</span>
+  </div>
+
+  <div class="education-map">
+    <iframe
+      id="education-map-frame"
+      title="Education institution location"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <a
+    id="education-map-link"
+    class="education-map-link"
+    href="#"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Open in Google Maps ↗
+  </a>
+</dialog>
+
           <div class="section-heading reveal">
             <div>
               <p class="eyebrow">01 / MY LEARNING JOURNEY</p>
