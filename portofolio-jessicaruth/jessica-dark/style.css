@@ -2227,22 +2227,17 @@ dialog p {
   }
 }
 
-/* =========================================
-   JESSICA.DEV - FULL PAGE GRID BACKGROUND
-   ========================================= */
-
-html {
-  min-height: 100%;
-}
+/* ==========================================
+   JESSICA.DEV - DUAL CONTRAST GRID BACKGROUND
+   ========================================== */
 
 body {
   position: relative;
   min-height: 100vh;
   background-color: #171e2e;
-  isolation: isolate;
 }
 
-/* Grid background untuk seluruh halaman */
+/* Grid halus untuk seluruh halaman */
 body::before {
   content: "";
   position: absolute;
@@ -2252,15 +2247,67 @@ body::before {
     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 
-  background-size: 55px 55px;
+  background-size: 25px 25px;
+  background-position: center top;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Konten tetap di atas grid */
+body > header,
+body > main,
+body > footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Grid khusus Home - lebih kontras */
+#home {
+  position: relative;
+  isolation: isolate;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+
+  background-size: 25px 25px;
   background-position: center top;
 
   pointer-events: none;
   z-index: -1;
 }
+/* SOFT GRID - FULL WEBSITE */
 
-/* Pastikan pola grid tidak tertutup
-   background solid pada main */
-main {
-  background: transparent;
+body {
+  background-color: #171e2e;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+
+  background-size: 40px 40px;
+  background-position: center center;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+header,
+main,
+footer {
+  position: relative;
+  z-index: 1;
 }
