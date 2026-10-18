@@ -350,9 +350,16 @@ button:focus-visible,
   color: var(--muted);
 }
 .technologies {
-  padding: 25px 0 15px;
+  width: min(1600px, calc(100vw - 64px));
+  max-width: none;
+
+  margin-left: 50%;
+  transform: translateX(-50%);
+
+  padding: 35px 0 30px;
   border-block: 1px solid var(--line);
 }
+
 .small-heading,
 .section-heading {
   display: flex;
