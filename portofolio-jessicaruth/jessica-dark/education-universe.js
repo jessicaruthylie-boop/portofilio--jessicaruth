@@ -125,3 +125,8 @@
     }
   });
 })();
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    showInfo(button.dataset.au2);
+  });
+});

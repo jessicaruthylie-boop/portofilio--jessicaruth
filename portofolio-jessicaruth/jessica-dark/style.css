@@ -1695,3 +1695,31 @@ dialog p {
     transition: none;
   }
 }
+
+/* EDUCATION HEADING WITH HORIZONTAL LINE */
+
+.education .section-heading .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  white-space: nowrap;
+  margin-bottom: 14px;
+}
+
+.education .section-heading .eyebrow::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #41465a;
+}
+
+/* Pastikan heading menggunakan lebar penuh */
+.education .section-heading > div {
+  width: 100%;
+  min-width: 0;
+}
+
+.education .section-heading {
+  align-items: flex-start;
+}

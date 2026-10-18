@@ -469,3 +469,38 @@
     transform: rotate(-180deg);
   }
 }
+/* CLICKABLE ORBIT INSTITUTIONS */
+
+.au2-choice {
+  cursor: pointer;
+  background: #171e2ee8;
+  border: none;
+  border-bottom: 1px solid #ffa58645;
+  border-radius: 0;
+  text-align: left;
+}
+
+.au2-choice:hover {
+  background: #171e2e;
+}
+
+.au2-choice:hover strong,
+.au2-choice[aria-pressed="true"] strong {
+  color: #ffa586;
+}
+
+.au2-choice:hover .au2-action {
+  color: #ffc1a7;
+  opacity: 1;
+}
+
+/* Outline hanya ketika menggunakan keyboard */
+.au2-choice:focus-visible {
+  outline: 2px solid #ffa586;
+  outline-offset: 3px;
+}
+
+/* Hilangkan outline klik mouse */
+.au2-choice:focus:not(:focus-visible) {
+  outline: none;
+}
