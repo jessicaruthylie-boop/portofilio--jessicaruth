@@ -2004,3 +2004,132 @@ dialog p {
   #education .au2-choice { transition: none; }
   #education .au2-choice:hover { translate: none; }
 }
+
+/* Compact sizing at normal browser zoom; columns follow available space. */
+body { font-size: 15px; }
+.section { padding-block: clamp(36px, 4vw, 56px); }
+.section-heading { margin-bottom: 24px; }
+.section-heading h2 { font-size: clamp(26px, 2.6vw, 34px); letter-spacing: -1px; }
+.header { padding-top: 12px; }
+.nav { padding: 12px 22px; }
+.brand { font-size: 21px; }
+.hero { gap: 24px; padding-top: 44px; }
+.hero h1 { font-size: clamp(34px, 3.8vw, 50px); }
+.portrait-inner { height: clamp(280px, 30vw, 380px); }
+.about-copy h2 { font-size: clamp(21px, 2vw, 25px); }
+#education { width: calc(100% - 48px); }
+#education #au2-info { padding: clamp(22px, 2.5vw, 32px); }
+#education #au2-info .au2-info-empty h3 { font-size: clamp(28px, 2.7vw, 38px); }
+#education .au2-overview { margin-top: 22px; padding-top: 20px; gap: 12px; }
+#education .au2-choice { min-height: 0; padding: 22px 48px 22px 24px; gap: 7px; }
+#education .au2-choice strong { font-size: clamp(19px, 1.8vw, 24px); }
+#education .au2-card-icon { width: 38px; height: 38px; margin-bottom: 5px; }
+#education .au2-card-icon svg { width: 22px; height: 22px; }
+#education .au2-choice .au2-action { padding-top: 8px; }
+#experience .journey-tabs { margin-bottom: 28px; }
+#experience .journey-tabs a { padding: 9px 16px; }
+#experience .journey-section-heading { min-height: 0; gap: 12px; padding-bottom: 16px; }
+#experience .journey-section-heading h3 { font-size: clamp(21px, 2vw, 25px); }
+#experience .journey-content, #experience .experience-tile { padding: clamp(18px, 2vw, 24px); }
+#experience h4, #experience .experience-tile h4 { font-size: clamp(19px, 1.7vw, 23px); margin-bottom: 10px; }
+#experience .organization-name { margin-top: 16px; }
+#experience .journey-description, #experience .event-name { font-size: 14px; line-height: 1.65; }
+#experience .journey-responsibilities { font-size: 13px; }
+#experience .experience-topline { margin-bottom: 16px; }
+#experience .mini-gallery { gap: 10px; }
+#experience .mini-gallery div { min-height: 0; aspect-ratio: 2; font-size: 11px; }
+#experience .organization-timeline, #experience .experience-board { gap: 20px; }
+@media (min-width: 801px) and (max-width: 1000px) {
+  #experience .journey-layout { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; }
+}
+@media (min-width: 881px) and (max-width: 1000px) {
+  #education #academic-universe .au2-layout { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+  #education .au2-overview { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 800px) {
+  #experience .journey-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  #experience .journey-count { display: block; }
+}
+@media (max-width: 760px) {
+  .wrap, #education { width: calc(100% - 32px); }
+  .hero { gap: 24px; padding-top: 28px; }
+  .hero h1 { font-size: clamp(32px, 8vw, 44px); }
+  .portrait-inner { height: 300px; }
+  #education #au2-info { margin-top: 0; order: 0; }
+  #education #academic-universe .au2-orbit-area { order: 1; }
+  #experience .journey-meta { gap: 8px; }
+  #experience .journey-date { white-space: normal; }
+}
+
+/* Experience: balanced rows instead of unequal side-by-side timelines. */
+#experience .journey-layout {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 36px;
+}
+#experience .journey-section { display: grid; gap: 20px; }
+#experience .journey-section-heading {
+  flex-direction: row;
+  align-items: end;
+  gap: 20px;
+  padding-bottom: 16px;
+}
+#experience .organization-timeline {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+#experience .journey-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+}
+#experience .journey-year {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cyan);
+}
+#experience .journey-content {
+  position: relative;
+  border-top: 2px solid #ffa58670;
+  border-radius: 14px;
+  padding: 22px;
+}
+#experience .organization-name { line-height: 1.6; }
+#experience .organization-name span { display: block; }
+#experience .journey-meta .badge { font-size: 10px; }
+#experience .journey-responsibilities { line-height: 1.7; }
+#experience .experience-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+#experience .experience-tile {
+  padding: 20px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #242d40, #1b2333);
+}
+#experience .experience-tile h4 { font-size: 20px; }
+#experience .experience-tile .event-name { font-size: 13px; line-height: 1.65; }
+#experience .experience-tile .event-role { margin-bottom: 16px; color: #b4bfd0; }
+#experience .experience-tile .mini-gallery { padding-top: 12px; gap: 8px; }
+#experience .mini-gallery div {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1.45;
+  min-width: 0;
+  padding: 8px;
+  text-align: center;
+  font-size: 10px;
+  border: 1px dashed #626d83;
+  background: #151d2c;
+}
+@media (max-width: 950px) {
+  #experience .experience-board { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  #experience .organization-timeline,
+  #experience .experience-board { grid-template-columns: minmax(0, 1fr); }
+  #experience .journey-section-heading { align-items: start; flex-direction: column; gap: 10px; }
+  #experience .journey-content, #experience .experience-tile { padding: 18px; }
+  #experience .mini-gallery div { aspect-ratio: 1.8; }
+}
