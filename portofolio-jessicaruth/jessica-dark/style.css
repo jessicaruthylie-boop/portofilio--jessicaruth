@@ -1790,3 +1790,98 @@ dialog p {
   #experience .journey-content { padding: 18px; }
   #experience .journey-tabs a { padding: 11px 13px; gap: 10px; }
 }
+/* Education: stationary institution cards and a compact detail panel. */
+#education #academic-universe .au2-layout {
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: stretch;
+  gap: clamp(24px, 4vw, 48px);
+  min-height: 0;
+  padding: 32px;
+  border: 1px solid #ffffff16;
+  border-radius: 20px;
+  background: linear-gradient(125deg, #222a3c, #1b2232);
+}
+#education #au2-info {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  border: 0;
+  border-radius: 12px;
+  background: #141b2b70;
+}
+#education .au2-info-empty { max-width: 42ch; width: 100%; }
+#education .au2-overview {
+  display: grid;
+  gap: 18px;
+  margin: 24px 0 0;
+  padding-top: 22px;
+  border-top: 1px solid #ffffff18;
+}
+#education .au2-overview dt {
+  margin-bottom: 6px;
+  color: #aeb9c9;
+  font: 10px/1.5 Consolas, monospace;
+  letter-spacing: 1.2px;
+}
+#education .au2-overview dd { margin: 0; color: #fff1e9; font-size: 14px; font-weight: 600; line-height: 1.5; }
+#education #au2-info .au2-overview-hint { margin: 24px 0 0; color: #aeb9c9; font-size: 12px; line-height: 1.7; }
+#education #au2-info h3 { font-size: clamp(24px, 2.5vw, 34px); letter-spacing: -.7px; }
+#education #au2-info p { font-size: 14px; }
+#education .au2-info-content { width: 100%; min-width: 0; }
+#education .au2-orbit-area { min-width: 0; align-self: center; }
+#education .au2-stage {
+  display: grid;
+  gap: 16px;
+  height: auto;
+  background: none;
+}
+#education .au2-ring, #education .au2-center { display: none; }
+#education .au2-orbiter, #education .au2-satellite {
+  position: static;
+  width: 100%;
+  height: auto;
+  translate: none;
+  transform: none;
+  animation: none;
+}
+#education .au2-choice {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 160px;
+  padding: 24px 56px 24px 24px;
+  gap: 10px;
+  border: 1px solid #ffffff20;
+  border-radius: 12px;
+  background: #20293b;
+  animation: none;
+  transform: none;
+  font-family: inherit;
+  transition: background .2s ease, border-color .2s ease;
+}
+#education .au2-choice::after {
+  content: '\2197';
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: #ffa586;
+  font-size: 23px;
+}
+#education .au2-choice strong { font-size: clamp(18px, 2vw, 22px); line-height: 1.35; }
+#education .au2-choice small { font-size: 13px; line-height: 1.5; }
+#education .au2-index { font-size: 10px; letter-spacing: 1.4px; }
+#education .au2-action { margin-top: 6px; font-size: 12px; opacity: 1; }
+#education .au2-choice:hover,
+#education .au2-choice[aria-pressed="true"] {
+  background: #2a3041;
+  border-color: #ffa58690;
+}
+#education .au2-choice:focus-visible { outline: 2px solid #ffa586; outline-offset: 4px; }
+#education .au2-hint { margin: 18px 0 0; font-size: 9px; line-height: 1.8; letter-spacing: 1.2px; }
+@media (max-width: 760px) {
+  #education #academic-universe .au2-layout { grid-template-columns: minmax(0, 1fr); padding: 18px; gap: 24px; }
+  #education #au2-info { padding: 20px; }
+  #education .au2-choice { padding: 22px 48px 22px 20px; min-height: 150px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #education .au2-choice { transition: none; }
+}
