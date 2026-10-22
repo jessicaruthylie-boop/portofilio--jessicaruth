@@ -1722,3 +1722,71 @@ dialog p {
 
 .education .section-heading {
   align-items: flex-start;
+
+}
+
+/* Organizations & Experience: editorial timeline and event cards. */
+#experience .journey-tabs { display: flex; gap: 12px; margin-bottom: 42px; flex-wrap: wrap; }
+#experience .journey-tabs a { display: flex; gap: 16px; align-items: center; padding: 12px 20px; border: 1px solid var(--line); border-radius: 8px; color: var(--cyan); font: 12px Consolas, monospace; }
+#experience .journey-tabs a span { padding: 0; border: 0; background: transparent; color: var(--text); font: 600 14px 'Segoe UI', sans-serif; }
+#experience .journey-tabs a:hover { background: #ffa58612; border-color: var(--cyan); }
+#experience a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; }
+#experience .journey-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(28px, 4vw, 56px);
+}
+#experience .journey-section { align-content: start; gap: 26px; scroll-margin-top: 120px; min-width: 0; }
+#experience .journey-section-heading { display: flex; flex-direction: column; justify-content: space-between; align-items: start; min-height: 112px; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+#experience .journey-section-heading .eyebrow { margin: 0 0 8px; font-size: 10px; }
+#experience .journey-section-heading h3 { margin: 0; font-size: clamp(22px, 3vw, 30px); line-height: 1.3; letter-spacing: -.8px; }
+#experience .journey-section-heading h3 span { color: var(--cyan); }
+#experience .journey-count { font: 10px Consolas, monospace; color: var(--muted); white-space: nowrap; }
+#experience .organization-timeline { display: grid; gap: 26px; position: relative; }
+#experience .organization-timeline::before { display: none; }
+#experience .journey-card { position: relative; grid-template-columns: minmax(0,1fr); padding: 0; gap: 12px; border: 0; border-radius: 0; background: transparent; }
+#experience .journey-year { display: flex; align-items: center; gap: 12px; padding: 0; background: transparent; text-align: left; font-size: 20px; }
+#experience .journey-year small { display: block; padding: 0; font: 10px Consolas, monospace; color: var(--muted); }
+#experience .journey-content { min-width: 0; padding: clamp(20px, 3vw, 32px); background: linear-gradient(125deg, #232c41, #1b2333); border: 1px solid var(--line); border-radius: 16px; }
+#experience .journey-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+#experience .journey-date { font: 11px/1.6 Consolas, monospace; color: var(--muted); }
+#experience .organization-name { margin: 24px 0 8px; color: var(--cyan); font-size: 13px; font-weight: 700; letter-spacing: 1px; }
+#experience .organization-name span { color: var(--muted); letter-spacing: 0; font-size: 12px; font-weight: 400; }
+#experience h4 { margin: 0 0 14px; font-size: clamp(21px, 2.5vw, 28px); line-height: 1.3; letter-spacing: -.5px; }
+#experience .journey-description { max-width: 68ch; margin: 0 0 12px; }
+#experience .journey-responsibilities { margin: 12px 0 24px; padding-left: 18px; color: var(--muted); font-size: 14px; }
+#experience .journey-responsibilities li { padding-left: 5px; margin-bottom: 7px; }
+#experience .journey-responsibilities li::marker { color: var(--cyan); }
+#experience .mini-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
+#experience .mini-gallery div { min-height: 120px; aspect-ratio: 1.9; border-radius: 9px; background: #141c2b; border-color: #566079; }
+#experience .mini-gallery img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+#experience .experience-board { grid-template-columns: minmax(0,1fr); gap: 24px; }
+#experience .experience-tile { display: flex; flex-direction: column; padding: clamp(20px, 3vw, 28px); background: #1b2333; border-radius: 16px; border-top: 2px solid #ffa58680; min-width: 0; }
+#experience .experience-topline { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 25px; }
+#experience .experience-topline span { font-size: 10px; letter-spacing: 1px; }
+#experience .experience-tile h4 { font-size: 23px; margin-bottom: 10px; }
+#experience .experience-tile .event-name { margin: 0 0 8px; color: var(--text); }
+#experience .experience-tile .event-role { margin: 0 0 20px; font-size: 12px; }
+#experience .experience-tile .mini-gallery { margin-top: auto; padding-top: 8px; }
+@media (max-width: 900px) {
+  #experience .journey-layout { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  #experience .journey-section-heading { min-height: 0; }
+}
+@media (max-width: 760px) {
+  #experience .journey-card { grid-template-columns: minmax(0,1fr); gap: 12px; }
+  #experience .organization-timeline::before { left: 25px; }
+  #experience .journey-year { font-size: 18px; }
+  #experience .journey-count { display: none; }
+  #experience .experience-board { grid-template-columns: 1fr; }
+  #experience .mini-gallery div { min-height: 85px; }
+  #experience .organization-name span { display: block; margin-top: 6px; }
+}
+@media (max-width: 420px) {
+  #experience .journey-card { grid-template-columns: minmax(0,1fr); }
+  #experience .journey-year { display: flex; gap: 12px; align-items: center; padding: 0; text-align: left; }
+  #experience .journey-year small { padding: 0; }
+  #experience .organization-timeline::before { display: none; }
+  #experience .journey-content { padding: 18px; }
+  #experience .journey-tabs a { padding: 11px 13px; gap: 10px; }
+}
