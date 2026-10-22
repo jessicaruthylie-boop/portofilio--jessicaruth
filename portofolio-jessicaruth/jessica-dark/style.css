@@ -1791,6 +1791,12 @@ dialog p {
   #experience .journey-tabs a { padding: 11px 13px; gap: 10px; }
 }
 /* Education: stationary institution cards and a compact detail panel. */
+#education {
+  box-sizing: border-box;
+  width: calc(100% - 64px);
+  max-width: none;
+  margin-inline: auto;
+}
 #education #academic-universe .au2-layout {
   grid-template-columns: minmax(0, 1fr);
   align-items: stretch;
@@ -1900,6 +1906,7 @@ dialog p {
 #education .au2-choice:focus-visible { outline: 2px solid #ffa586; outline-offset: 4px; }
 #education .au2-hint { margin: 18px 0 0; font-size: 9px; line-height: 1.8; letter-spacing: 1.2px; }
 @media (max-width: 760px) {
+  #education { width: calc(100% - 36px); }
   #education #academic-universe .au2-layout { grid-template-columns: minmax(0, 1fr); padding: 18px; gap: 24px; }
   #education #au2-info { padding: 20px; }
   #education .au2-info-empty, #education .au2-stage { grid-template-columns: minmax(0, 1fr); }
