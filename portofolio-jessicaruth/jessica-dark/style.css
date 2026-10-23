@@ -2162,6 +2162,17 @@ body { font-size: 15px; }
   font: bold 24px Consolas, monospace;
 }
 #experience .community-copy { flex: 1; min-width: 0; }
+#experience .community-logo { display: block; flex: 0 1 300px; max-width: 100%; padding: 12px; border-radius: 14px; background: #fff; }
+#experience .community-logo img { display: block; width: 100%; height: auto; }
+#experience .community-profile { display: inline-flex; align-items: center; gap: 12px; margin-top: 14px; padding-block: 8px; color: #ffc1a7; font-size: 13px; text-decoration: none; }
+#experience .community-profile:hover { text-decoration: underline; text-underline-offset: 4px; }
+#experience .community-profile:focus-visible,
+#experience .community-logo:focus-visible { outline: 2px solid #ffc1a7; outline-offset: 4px; }
+@media (max-width: 760px) {
+  #experience .community-card { flex-wrap: wrap; }
+  #experience .community-logo { flex-basis: 100%; width: min(100%, 340px); }
+  #experience .community-copy { flex-basis: 65%; }
+}
 #experience .community-copy .eyebrow { margin: 0 0 8px; font-size: 10px; }
 #experience .community-copy h4 { margin: 0; font-size: clamp(20px, 2.3vw, 28px); line-height: 1.35; }
 #experience .community-copy h4 span { color: #adbacd; font-weight: 400; }
@@ -2169,7 +2180,7 @@ body { font-size: 15px; }
 @media (max-width: 520px) {
   #experience .community-card { flex-wrap: wrap; gap: 16px; }
   #experience .community-symbol { flex-basis: 48px; height: 48px; font-size: 20px; }
-  #experience .community-year { margin-left: 64px; }
+  #experience .community-year { margin-left: 0; }
 }
 
 /* Horizontal committee gallery: swipe, keyboard, and arrow navigation. */
