@@ -2139,20 +2139,21 @@ body { font-size: 15px; }
   #experience .mini-gallery div { aspect-ratio: 1.8; }
 }
 
-/* Committee experience: horizontal gallery with touch and keyboard scrolling. */
+/* Horizontal committee gallery: swipe, keyboard, and arrow navigation. */
 #experience #committee-experience .experience-board {
   position: relative;
+  display: grid;
   grid-template-columns: none;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(270px, calc((100% - 54px) / 4));
-  gap: 18px;
-  padding: 6px 2px 18px;
+  grid-auto-columns: clamp(300px, 31%, 420px);
+  gap: 24px;
+  padding: 8px 2px 24px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-padding-inline: 2px;
   overscroll-behavior-x: contain;
   scrollbar-width: thin;
-  scrollbar-color: #ffa58680 #222b3d;
+  scrollbar-color: #ffa58670 #ffffff08;
 }
 #committee-experience .experience-board::before {
   content: none;
@@ -2161,25 +2162,41 @@ body { font-size: 15px; }
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-areas: 'meta' 'photos' 'title' 'event' 'role';
+  grid-template-areas: 'meta' 'title' 'event' 'role' 'photos';
   grid-template-rows: auto auto auto 1fr auto;
-  gap: 16px;
-  align-content: start;
-  padding: 20px;
+  min-width: 0;
   scroll-snap-align: start;
+  gap: 14px;
+  align-content: start;
+  padding: 24px;
+  border-top: 2px solid #ffa58665;
   border: 1px solid #ffffff18;
-  border-radius: 16px;
-  background: linear-gradient(155deg, #293349, #1b2333 70%);
+  border-radius: 22px;
+  background: radial-gradient(ellipse at top right, #ffa5860c, transparent 65%), linear-gradient(155deg, #252f43, #192232 75%);
   box-shadow: 0 8px 24px #00000018;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
 }
+#experience #committee-experience .experience-tile:hover {
+  border-color: #ffa58665;
+  box-shadow: 0 12px 32px #00000028;
+  transform: translateY(-4px);
+}
+.committee-navigation { display: flex; align-items: center; gap: 20px; }
+.committee-arrows { display: flex; gap: 8px; }
+.committee-arrows[hidden] { display: none; }
+.committee-arrows button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid #ffa58645; border-radius: 50%; background: #ffa5860a; color: #ffc1a7; font-size: 23px; cursor: pointer; transition: background .2s ease; }
+.committee-arrows button:hover:not(:disabled) { background: #ffa58625; }
+.committee-arrows button:disabled { opacity: .3; cursor: default; }
+.committee-arrows button:focus-visible,
+#committee-track:focus-visible { outline: 2px solid #ffc1a7; outline-offset: 4px; }
 #committee-experience .experience-topline { grid-area: meta; margin: 0; align-items: center; gap: 10px; }
 #committee-experience .experience-topline span:first-child { color: #ffb79b; font-size: 10px; line-height: 1.6; }
 #committee-experience .experience-topline span:last-child {
   position: static;
   display: grid;
   place-items: center;
-  width: 31px;
-  height: 31px;
+  width: 38px;
+  height: 38px;
   flex-shrink: 0;
   border: 1px solid #ffa58650;
   border-radius: 9px;
@@ -2187,10 +2204,10 @@ body { font-size: 15px; }
   color: #ffc1a7;
   font: 11px Consolas, monospace;
 }
-#experience #committee-experience .experience-tile h4 { grid-area: title; margin: 0; font-size: 21px; line-height: 1.3; }
+#experience #committee-experience .experience-tile h4 { grid-area: title; margin: 0; max-width: 32ch; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.35; letter-spacing: -.5px; overflow-wrap: anywhere; text-wrap: balance; }
 #experience #committee-experience .event-name { grid-area: event; margin: 0; max-width: 54ch; font-size: 13px; color: #dce2ec; }
 #committee-experience .event-name em { font-style: normal; }
-#experience #committee-experience .event-role { grid-area: role; margin: 0; padding-top: 14px; border-top: 1px solid #ffffff15; font-size: 12px; color: #ffc1a7; }
+#experience #committee-experience .event-role { grid-area: role; align-self: start; justify-self: start; margin: 0 0 6px; padding: 7px 12px; border: 1px solid #ffa58625; border-radius: 100px; background: #ffa5860a; font-size: 12px; color: #ffc1a7; }
 #experience #committee-experience .mini-gallery {
   grid-area: photos;
   align-self: center;
@@ -2200,11 +2217,11 @@ body { font-size: 15px; }
   padding: 0;
 }
 #experience #committee-experience .mini-gallery div {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 16 / 9;
   min-height: 0;
   overflow: hidden;
   border: 1px dashed #64708970;
-  border-radius: 10px;
+  border-radius: 12px;
   background: linear-gradient(145deg, #111a2a, #1a2334);
   color: #aeb9cc;
 }
@@ -2212,7 +2229,7 @@ body { font-size: 15px; }
 #experience #committee-experience .decoration-gallery a {
   display: block;
   min-width: 0;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border: 1px solid #64708970;
   border-radius: 10px;
@@ -2223,6 +2240,13 @@ body { font-size: 15px; }
   outline-offset: 3px;
 }
 @media (max-width: 700px) {
-  #experience #committee-experience .experience-board { grid-auto-columns: min(85%, 320px); }
-  #experience #committee-experience .experience-tile { padding: 18px; }
+  #experience #committee-experience .experience-board { grid-template-columns: none; grid-auto-columns: 86%; gap: 16px; }
+  #experience #committee-experience .experience-tile { padding: 20px; border-radius: 18px; }
+  #experience #committee-experience .experience-tile h4 { max-width: none; }
+  #committee-experience .journey-section-heading { flex-wrap: wrap; gap: 14px; }
+  .committee-navigation { width: 100%; justify-content: space-between; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #experience #committee-experience .experience-tile { transition: none; transform: none; }
+  .committee-arrows button { transition: none; }
 }

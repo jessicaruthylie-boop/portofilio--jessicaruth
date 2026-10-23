@@ -1,4 +1,68 @@
 "use strict";
+// Loop the committee gallery using inert copies on both sides of the real cards.
+(() => {
+  const track = document.querySelector('#committee-track');
+  if (!track) return;
+  const controls = document.querySelector('.committee-arrows');
+  const buttons = [...controls.querySelectorAll('button')];
+  const cards = [...track.querySelectorAll('.experience-tile')];
+  if (!cards.length) return;
+  function copyCards() {
+    return cards.map(card => {
+      const copy = card.cloneNode(true);
+      copy.setAttribute('aria-hidden', 'true');
+      copy.inert = true;
+      copy.removeAttribute('id');
+      copy.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
+      return copy;
+    });
+  }
+  track.prepend(...copyCards());
+  track.append(...copyCards());
+  controls.hidden = false;
+  let step = 0;
+  let origin = 0;
+  let cycle = 0;
+  let settleTimer;
+  let touching = false;
+  function measure() {
+    const index = step ? Math.round((track.scrollLeft - origin) / step) : 0;
+    step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap);
+    origin = cards[0].offsetLeft - track.firstElementChild.offsetLeft;
+    cycle = step * cards.length;
+    track.scrollTo({ left: origin + ((index % cards.length + cards.length) % cards.length) * step, behavior: 'instant' });
+  }
+  function settle() {
+    if (touching || !cycle) return;
+    const position = track.scrollLeft;
+    if (position < origin - 1 || position >= origin + cycle - 1) {
+      const wrapped = ((position - origin) % cycle + cycle) % cycle;
+      track.scrollTo({ left: origin + wrapped, behavior: 'instant' });
+    }
+  }
+  function move(direction) {
+    settle();
+    const index = Math.round((track.scrollLeft - origin) / step);
+    track.scrollTo({ left: origin + (index + direction) * step, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  }
+  buttons.forEach(button => button.addEventListener('click', () => move(Number(button.dataset.committeeDirection))));
+  track.addEventListener('keydown', event => {
+    if (event.target !== track || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+    event.preventDefault();
+    move(event.key === 'ArrowRight' ? 1 : -1);
+  });
+  track.addEventListener('scroll', () => {
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(settle, 180);
+  }, { passive: true });
+  track.addEventListener('touchstart', () => { touching = true; }, { passive: true });
+  const endTouch = () => { touching = false; clearTimeout(settleTimer); settleTimer = setTimeout(settle, 180); };
+  track.addEventListener('touchend', endTouch, { passive: true });
+  track.addEventListener('touchcancel', endTouch, { passive: true });
+  track.addEventListener('scrollend', settle);
+  new ResizeObserver(measure).observe(track);
+  measure();
+})();
 // Isi data asli di bawah ini untuk mengaktifkan kontak. Biarkan kosong jika belum tersedia.
 const CONTACTS = {
   email: { value: "", label: "" },
