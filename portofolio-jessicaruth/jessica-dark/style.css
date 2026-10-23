@@ -2203,6 +2203,20 @@ body { font-size: 15px; }
   background: linear-gradient(145deg, #111a2a, #1a2334);
   color: #aeb9cc;
 }
+#experience #committee-experience .supervision-gallery a,
+#experience #committee-experience .decoration-gallery a {
+  display: block;
+  min-width: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid #64708970;
+  border-radius: 10px;
+}
+#experience #committee-experience .supervision-gallery a:focus-visible,
+#experience #committee-experience .decoration-gallery a:focus-visible {
+  outline: 2px solid #ffc1a7;
+  outline-offset: 3px;
+}
 @media (max-width: 700px) {
   #experience #committee-experience .experience-board { grid-auto-columns: min(85%, 320px); }
   #experience #committee-experience .experience-tile { padding: 18px; }
