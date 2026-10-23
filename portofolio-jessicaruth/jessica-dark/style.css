@@ -2250,6 +2250,72 @@ body { font-size: 15px; }
   #projects .work-entry { padding: 18px; }
 }
 
+/* Featured award with a compact supporting grid. */
+#projects {
+  margin-block: 36px;
+  padding: clamp(22px, 3.5vw, 48px);
+  border: 1px solid #ffffff20;
+  border-radius: 24px;
+  background: radial-gradient(ellipse at top left, #26304745, transparent 65%), #10192580;
+}
+#projects .portfolio-heading { display: flex; justify-content: space-between; align-items: start; gap: 24px; margin-bottom: 32px; }
+#projects .portfolio-heading .section-heading { margin: 0; }
+#projects .portfolio-heading h2 { font-family: Georgia, serif; font-size: clamp(30px, 3.5vw, 44px); line-height: 1.05; letter-spacing: -.8px; }
+#projects .portfolio-subtitle { max-width: 36ch; margin: 12px 0 0; font-size: 13px; line-height: 1.65; color: #adbacd; }
+#projects .portfolio-heading .tabs { flex-shrink: 0; margin: 8px 0 0; padding: 4px; border-radius: 100px; }
+#projects .portfolio-heading .tabs button { border-radius: 100px; padding: 10px 20px; }
+#projects #certificates-panel > .work-panel-intro { display: none; }
+#projects .credential-group > h3 { font-size: 19px; margin-bottom: 14px; }
+#projects .credential-group:first-of-type > h3 { color: #ffb79b; }
+#projects .credential-group:first-of-type .credential-grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); grid-template-rows: repeat(3, auto); gap: 10px 16px; }
+#projects .credential-group:first-of-type .credential-featured {
+  grid-row: 1 / 4;
+  grid-template-columns: minmax(100px, .85fr) minmax(0, 1.2fr);
+  grid-template-areas: 'image featured' 'image title' 'image issuer' 'image meta' 'image link';
+  grid-template-rows: auto auto auto 1fr auto;
+  padding: 24px;
+  align-content: center;
+  border-color: #ffa58690;
+  background: linear-gradient(145deg, #34304480, #151e2c);
+}
+#projects .credential-featured-label { grid-area: featured; justify-self: start; padding: 3px 10px; border: 1px solid #ffa58670; border-radius: 30px; color: #ffc1a7; font-size: 10px; }
+#projects .credential-featured .credential-image { align-self: center; }
+#projects .credential-featured .credential-image img { height: auto; min-height: 150px; aspect-ratio: 4 / 3; }
+#projects .credential-entry.credential-featured h4 { font-size: clamp(17px, 1.8vw, 22px); }
+#projects .credential-entry { padding: 12px; column-gap: 12px; row-gap: 4px; grid-template-columns: 64px minmax(0, 1fr); }
+#projects .credential-image img { height: 70px; }
+#projects .credential-entry h4 { font-size: 13px; line-height: 1.45; }
+#projects .credential-entry > p { font-size: 11px; }
+#projects .credential-entry .work-entry-meta > span { display: none; }
+#projects .credential-entry .work-drive-link { margin-top: 0; padding-block: 3px; font-size: 10px; }
+#projects .credential-group:not(:first-of-type) .credential-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+#projects .credential-group:not(:first-of-type) .credential-entry { grid-template-columns: 48px minmax(0, 1fr); padding: 12px; column-gap: 10px; }
+#projects .credential-group:not(:first-of-type) .credential-image img { height: 78px; }
+@media (max-width: 1100px) {
+  #projects .credential-group:not(:first-of-type) .credential-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  #projects .portfolio-heading { flex-direction: column; gap: 18px; }
+  #projects .credential-group:first-of-type .credential-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; }
+  #projects .credential-group:first-of-type .credential-featured { grid-row: auto; padding: 18px; }
+}
+@media (max-width: 520px) {
+  #projects { padding: 20px 16px; border-radius: 18px; }
+  #projects .credential-group:not(:first-of-type) .credential-grid { grid-template-columns: minmax(0, 1fr); }
+  #projects .credential-group:first-of-type .credential-featured { grid-template-columns: 90px minmax(0, 1fr); gap: 8px 12px; }
+  #projects .credential-featured .credential-image img { min-height: 100px; }
+}
+
+#projects .credential-zoom { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; border-radius: inherit; }
+#projects .credential-zoom:focus-visible { outline: 2px solid #ffc1a7; outline-offset: -3px; }
+#projects .credential-zoom:hover { background: #ffa58610; }
+dialog.credential-viewer { width: min(1100px, calc(100% - 24px)); max-height: 94dvh; padding: clamp(16px, 3vw, 28px); border-color: #ffa58650; }
+.credential-viewer-heading { display: flex; justify-content: space-between; align-items: start; gap: 16px; margin-bottom: 20px; }
+.credential-viewer-heading h2 { margin: 0; font-size: clamp(17px, 2.5vw, 24px); line-height: 1.4; letter-spacing: -.3px; }
+.credential-viewer-heading button { flex-shrink: 0; min-height: 44px; padding: 8px 14px; border: 1px solid #ffa58645; border-radius: 10px; background: #ffa58610; color: #ffc1a7; cursor: pointer; }
+.credential-viewer-heading button:focus-visible { outline: 2px solid #ffc1a7; outline-offset: 3px; }
+dialog.credential-viewer .credential-viewer-image { display: block; width: 100%; height: min(65dvh, 720px); max-height: none; object-fit: contain; background: #0e1623; border-radius: 10px; }
+
 /* Developer community within the shared experience layout. */
 #experience .community-card {
   display: flex;

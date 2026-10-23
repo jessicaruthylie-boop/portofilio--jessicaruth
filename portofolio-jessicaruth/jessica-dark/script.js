@@ -1,4 +1,51 @@
 "use strict";
+// Enlarge each certificate while preserving the compact card layout.
+(() => {
+  const images = document.querySelectorAll('#certificates-panel .credential-image img');
+  if (!images.length || typeof HTMLDialogElement === 'undefined') return;
+  const viewer = document.createElement('dialog');
+  viewer.className = 'credential-viewer';
+  viewer.setAttribute('aria-labelledby', 'credential-viewer-title');
+  viewer.innerHTML = '<div class="credential-viewer-heading"><h2 id="credential-viewer-title"></h2><button type="button" aria-label="Tutup gambar sertifikat" autofocus>Tutup &times;</button></div><img class="credential-viewer-image" alt="" /><p class="credential-viewer-issuer"></p>';
+  document.body.append(viewer);
+  const title = viewer.querySelector('h2');
+  const enlarged = viewer.querySelector('img');
+  const issuer = viewer.querySelector('p');
+  let trigger;
+  let previousOverflow;
+  images.forEach(img => {
+    const card = img.closest('.credential-entry');
+    const name = card.querySelector('h4').textContent;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'credential-zoom';
+    button.setAttribute('aria-label', 'Perbesar sertifikat ' + name);
+    button.setAttribute('aria-haspopup', 'dialog');
+    img.before(button);
+    button.append(img);
+    button.addEventListener('click', () => {
+      trigger = button;
+      title.textContent = name;
+      enlarged.src = img.currentSrc || img.src;
+      enlarged.alt = img.alt;
+      issuer.textContent = card.querySelector(':scope > p')?.textContent || '';
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      viewer.showModal();
+    });
+  });
+  viewer.querySelector('button').addEventListener('click', () => viewer.close());
+  viewer.addEventListener('click', event => {
+    if (event.target !== viewer) return;
+    const rect = viewer.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) viewer.close();
+  });
+  viewer.addEventListener('close', () => {
+    document.body.style.overflow = previousOverflow;
+    enlarged.removeAttribute('src');
+    trigger?.focus({ preventScroll: true });
+  });
+})();
 // Loop the committee gallery using inert copies on both sides of the real cards.
 (() => {
   const track = document.querySelector('#committee-track');
