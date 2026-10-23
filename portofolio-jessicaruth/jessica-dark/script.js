@@ -1,4 +1,15 @@
 "use strict";
+// Lightly blurred certificate backdrop with the original image kept sharp.
+document.querySelectorAll('.credential-image img').forEach(img => {
+  const refresh = () => {
+    if ((img.currentSrc || img.src).includes('placeholder')) return;
+    const frame = img.closest('.credential-image');
+    frame.classList.add('certificate-soft-backdrop');
+    frame.style.setProperty('--certificate-backdrop', 'url(' + JSON.stringify(img.currentSrc || img.src) + ')');
+  };
+  img.addEventListener('load', refresh);
+  refresh();
+});
 // Enlarge each certificate while preserving the compact card layout.
 (() => {
   const images = document.querySelectorAll('#certificates-panel .credential-image img');
