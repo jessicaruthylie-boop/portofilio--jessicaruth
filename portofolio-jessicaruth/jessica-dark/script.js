@@ -254,7 +254,7 @@ selectTab(tabs[0]);
 // Modal sertifikat: dialog native membatasi fokus dan mendukung Escape.
 const modal = document.querySelector("#certificate-modal");
 const openCertificate = document.querySelector("#open-certificate");
-if (typeof modal.showModal === "function") {
+if (modal && openCertificate && typeof modal.showModal === "function") {
   openCertificate.disabled = false;
   openCertificate.addEventListener("click", () => modal.showModal());
   document

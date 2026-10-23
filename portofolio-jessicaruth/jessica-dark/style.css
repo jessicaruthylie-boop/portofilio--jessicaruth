@@ -2139,6 +2139,34 @@ body { font-size: 15px; }
   #experience .mini-gallery div { aspect-ratio: 1.8; }
 }
 
+/* Portfolio entries and credentials. */
+#projects .work-panel-intro { margin: 0 0 24px; color: var(--muted); font-size: 13px; }
+#projects .work-grid,
+#projects .credential-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+#projects .work-entry,
+#projects .credential-entry { display: flex; flex-direction: column; min-width: 0; padding: clamp(20px, 2.5vw, 30px); border: 1px solid #ffffff18; border-radius: 18px; background: linear-gradient(145deg, #242e42, #182131); transition: border-color .2s ease; }
+#projects .work-entry:hover,
+#projects .credential-entry:hover { border-color: #ffa58665; }
+#projects .work-entry-meta { display: flex; justify-content: space-between; align-items: start; gap: 14px; margin-bottom: 22px; font: 10px/1.6 Consolas, monospace; letter-spacing: 1px; color: #ffc1a7; }
+#projects .work-entry-meta time { flex-shrink: 0; padding: 2px 9px; border: 1px solid #ffa58630; border-radius: 20px; }
+#projects .work-entry h3 { margin: 0 0 24px; color: #fff1e9; font-size: clamp(19px, 2vw, 24px); line-height: 1.4; overflow-wrap: anywhere; }
+#projects .work-contribution { margin: auto 0 0; padding-top: 16px; border-top: 1px solid #ffffff12; color: #c5cede; font-size: 13px; line-height: 1.7; }
+#projects .work-contribution span { display: block; margin-bottom: 5px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #ffa586; }
+#projects .credential-group + .credential-group { margin-top: 36px; }
+#projects .credential-group > h3 { display: flex; align-items: center; gap: 12px; margin: 0 0 18px; font-size: 21px; color: #fff1e9; }
+#projects .credential-group > h3 span { font: 11px Consolas, monospace; color: #ffa586; }
+#projects .credential-entry h4 { margin: 0 0 12px; color: #fff1e9; font-size: 18px; line-height: 1.5; overflow-wrap: anywhere; }
+#projects .credential-entry > p { margin: auto 0 0; color: #adbacd; font-size: 13px; line-height: 1.7; }
+@media (max-width: 640px) {
+  #projects .work-grid,
+  #projects .credential-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  #projects .tabs { display: flex; flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #projects .work-entry,
+  #projects .credential-entry { transition: none; }
+}
+
 /* Developer community within the shared experience layout. */
 #experience .community-card {
   display: flex;
