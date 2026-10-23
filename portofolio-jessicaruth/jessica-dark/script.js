@@ -58,6 +58,19 @@
   const cards = [...stack.querySelectorAll('.credential-entry')];
   const controls = document.querySelector('.certificate-carousel-controls');
   const position = controls.querySelector('.certificate-position');
+  const indicators = document.createElement('div');
+  indicators.className = 'certificate-indicators';
+  indicators.setAttribute('role', 'group');
+  indicators.setAttribute('aria-label', 'Pilih sertifikat');
+  const dots = cards.map((card, index) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', card.querySelector('h4').textContent);
+    dot.addEventListener('click', () => select(index));
+    indicators.append(dot);
+    return dot;
+  });
+  stack.after(indicators);
   let current = 0;
   function select(index) {
     current = (index + cards.length) % cards.length;
@@ -73,6 +86,7 @@
       card.setAttribute('aria-hidden', String(distance !== 0));
     });
     position.textContent = String(current + 1).padStart(2, '0') + ' / ' + cards.length;
+    dots.forEach((dot, index) => dot.setAttribute('aria-pressed', String(index === current)));
   }
   stack.classList.add('is-carousel');
   controls.hidden = false;

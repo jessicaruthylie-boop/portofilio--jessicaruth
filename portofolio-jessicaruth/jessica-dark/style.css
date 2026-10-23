@@ -2400,6 +2400,36 @@ dialog.credential-viewer .credential-viewer-image { display: block; width: 100%;
   #projects .certificate-stack.is-carousel .credential-entry { transition: none; }
 }
 
+/* Split introduction and overlapping certificate deck. */
+#projects #certificates-panel { display: grid; grid-template-columns: minmax(150px, .65fr) minmax(0, 2fr); gap: 0 24px; align-items: center; }
+#projects #certificates-panel[hidden] { display: none; }
+#projects #certificates-panel > .no-js-label { grid-column: 1 / -1; }
+#projects .certificate-collection-heading { flex-direction: column; align-items: start; gap: 24px; margin: 0; }
+#projects .certificate-collection-copy .eyebrow { font-size: 10px; margin: 0 0 12px; }
+#projects .certificate-collection-copy h3 { font: 600 clamp(24px, 2.8vw, 34px)/1.1 Georgia, serif; margin: 0 0 16px; }
+#projects .certificate-collection-copy h3 span { color: #ffa586; }
+#projects .certificate-collection-copy .work-panel-intro { max-width: 25ch; font-size: 12px; line-height: 1.8; }
+#projects .certificate-stack.is-carousel { padding: 20px 50px; }
+#projects .certificate-stack .credential-entry { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'image' 'title' 'meta' 'issuer' 'link'; grid-template-rows: auto auto auto 1fr auto; gap: 8px; padding: 16px; background: linear-gradient(150deg, #2d354b, #152031); }
+#projects .certificate-stack.is-carousel .credential-entry { transform: translateX(calc(var(--card-offset) * 55px)) scale(calc(1 - var(--card-depth) * .1)); min-height: 340px; }
+#projects .certificate-stack .credential-image { max-width: 100%; justify-self: stretch; }
+#projects .certificate-stack .credential-image img { height: 185px; }
+#projects .certificate-stack .credential-entry h4 { font-size: 17px; }
+#projects .certificate-stack .credential-entry > p { font-size: 11px; }
+.certificate-indicators { grid-column: 2; display: flex; justify-content: center; flex-wrap: wrap; gap: 3px; }
+.certificate-indicators button { position: relative; width: 22px; height: 28px; padding: 0; background: transparent; border: 0; cursor: pointer; }
+.certificate-indicators button::after { content: ''; position: absolute; left: 2px; right: 2px; top: 13px; height: 3px; border-radius: 4px; background: #ffffff25; }
+.certificate-indicators button[aria-pressed="true"]::after { background: #ffa586; }
+.certificate-indicators button:focus-visible { outline: 2px solid #ffa586; border-radius: 4px; }
+@media (max-width: 700px) {
+  #projects #certificates-panel { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  #projects .certificate-collection-heading { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+  #projects .certificate-collection-copy .work-panel-intro { max-width: 36ch; }
+  #projects .certificate-stack.is-carousel { padding: 16px 28px; }
+  #projects .certificate-stack.is-carousel .credential-entry { transform: translateX(calc(var(--card-offset) * 16px)) scale(calc(1 - var(--card-depth) * .06)); }
+  .certificate-indicators { grid-column: 1; }
+}
+
 /* Developer community within the shared experience layout. */
 #experience .community-card {
   display: flex;
