@@ -919,11 +919,16 @@
         </div>
         <div id="certificates-panel">
           <h3 class="no-js-label">Certificates</h3>
-          <p class="work-panel-intro">Penghargaan, sertifikasi, dan pelatihan · 2025–2026</p>
-          <section class="credential-group" aria-labelledby="appreciation-title">
-            <h3 id="appreciation-title">Awards &amp; Appreciation <span>04</span></h3>
-            <div class="credential-grid">
-            <article class="credential-entry credential-featured">
+          <div class="certificate-collection-heading">
+            <p class="work-panel-intro">11 certificates · Penghargaan, sertifikasi &amp; pelatihan</p>
+            <div class="certificate-carousel-controls" hidden>
+              <button type="button" data-certificate-step="-1" aria-label="Sertifikat sebelumnya" aria-controls="certificate-stack">&#8592;</button>
+              <span class="certificate-position" role="status" aria-live="polite" aria-atomic="true">01 / 11</span>
+              <button type="button" data-certificate-step="1" aria-label="Sertifikat berikutnya" aria-controls="certificate-stack">&#8594;</button>
+            </div>
+          </div>
+          <div id="certificate-stack" class="certificate-stack" role="region" aria-label="Galeri Certificates" tabindex="0">
+            <article class="credential-entry">
               <!-- Ganti src dengan lokasi gambar sertifikat ini, misalnya assets/certificates/nama-sertifikat.jpg. -->
               <figure class="credential-image">
                 <img src="assets/certificate-upload-placeholder.svg" alt="Tempat gambar sertifikat Del Artificial Intelligence Hackathon 2026" width="640" height="420" loading="lazy" />
@@ -931,7 +936,6 @@
               </figure>
               <div class="work-entry-meta"><span>Certificate of Appreciation</span><time datetime="2026">2026</time></div>
               <h4>Del Artificial Intelligence Hackathon 2026</h4>
-              <span class="credential-featured-label">Featured</span>
               <p>Del Institute of Technology · Team Lamport</p>
             
               <!-- Tambahkan href="URL_GOOGLE_DRIVE" pada tautan di bawah, hapus aria-disabled, lalu ubah teks menjadi "Lihat di Google Drive". -->
@@ -975,11 +979,7 @@
             
               <!-- Tambahkan href="URL_GOOGLE_DRIVE" pada tautan di bawah, hapus aria-disabled, lalu ubah teks menjadi "Lihat di Google Drive". -->
               <a class="work-drive-link" aria-disabled="true" target="_blank" rel="noopener noreferrer">Google Drive · belum ditambahkan <span aria-hidden="true">&#8599;</span></a>
-            </article></div>
-          </section>
-          <section class="credential-group" aria-labelledby="certifications-title">
-            <h3 id="certifications-title">Certifications <span>06</span></h3>
-            <div class="credential-grid">
+            </article>
             <article class="credential-entry">
               <!-- Ganti src dengan lokasi gambar sertifikat ini, misalnya assets/certificates/nama-sertifikat.jpg. -->
               <figure class="credential-image">
@@ -1057,11 +1057,7 @@
             
               <!-- Tambahkan href="URL_GOOGLE_DRIVE" pada tautan di bawah, hapus aria-disabled, lalu ubah teks menjadi "Lihat di Google Drive". -->
               <a class="work-drive-link" aria-disabled="true" target="_blank" rel="noopener noreferrer">Google Drive · belum ditambahkan <span aria-hidden="true">&#8599;</span></a>
-            </article></div>
-          </section>
-          <section class="credential-group" aria-labelledby="training-title">
-            <h3 id="training-title">Courses &amp; Training <span>01</span></h3>
-            <div class="credential-grid">
+            </article>
             <article class="credential-entry">
               <!-- Ganti src dengan lokasi gambar sertifikat ini, misalnya assets/certificates/nama-sertifikat.jpg. -->
               <figure class="credential-image">
@@ -1074,8 +1070,8 @@
             
               <!-- Tambahkan href="URL_GOOGLE_DRIVE" pada tautan di bawah, hapus aria-disabled, lalu ubah teks menjadi "Lihat di Google Drive". -->
               <a class="work-drive-link" aria-disabled="true" target="_blank" rel="noopener noreferrer">Google Drive · belum ditambahkan <span aria-hidden="true">&#8599;</span></a>
-            </article></div>
-          </section>
+            </article>
+          </div>
         </div>
         <div id="projects-panel">
           <h3 class="no-js-label">Projects</h3>

@@ -2316,6 +2316,90 @@ dialog.credential-viewer { width: min(1100px, calc(100% - 24px)); max-height: 94
 .credential-viewer-heading button:focus-visible { outline: 2px solid #ffc1a7; outline-offset: 3px; }
 dialog.credential-viewer .credential-viewer-image { display: block; width: 100%; height: min(65dvh, 720px); max-height: none; object-fit: contain; background: #0e1623; border-radius: 10px; }
 
+#projects .award-select { display: block; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+#projects .award-select:focus-visible { outline: 2px solid #ffc1a7; outline-offset: 4px; border-radius: 3px; }
+#projects [aria-labelledby="appreciation-title"] .credential-entry:not(.credential-featured) { cursor: pointer; }
+#projects [aria-labelledby="appreciation-title"] .credential-entry:not(.credential-featured):hover { border-color: #ffa58675; background: #253044; }
+.award-selection-status { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Certifications mirror the awards: featured card on the right. */
+#projects .credential-group[aria-labelledby="certifications-title"] .credential-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 12px;
+}
+#projects .credential-group[aria-labelledby="certifications-title"] .credential-featured {
+  grid-column: 3;
+  grid-row: 1 / 4;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: 'featured' 'image' 'title' 'issuer' 'meta' 'link';
+  grid-template-rows: auto auto auto auto 1fr auto;
+  padding: 22px;
+  gap: 12px;
+  border-color: #ffa58690;
+  background: linear-gradient(145deg, #34304480, #151e2c);
+}
+#projects .credential-group[aria-labelledby="certifications-title"] .credential-featured .credential-image { width: 100%; max-width: 240px; justify-self: center; }
+#projects .credential-group[aria-labelledby="certifications-title"] .credential-featured .credential-image img { height: 190px; aspect-ratio: auto; }
+#projects .credential-group[aria-labelledby="certifications-title"] .credential-entry:not(.credential-featured) { cursor: pointer; }
+#projects .credential-group[aria-labelledby="certifications-title"] .credential-entry:not(.credential-featured):hover { border-color: #ffa58675; background: #253044; }
+@media (max-width: 1000px) {
+  #projects .credential-group[aria-labelledby="certifications-title"] .credential-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: repeat(5, auto); }
+  #projects .credential-group[aria-labelledby="certifications-title"] .credential-featured { grid-column: 2; grid-row: 1 / 6; }
+}
+@media (max-width: 600px) {
+  #projects .credential-group[aria-labelledby="certifications-title"] .credential-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; }
+  #projects .credential-group[aria-labelledby="certifications-title"] .credential-featured { grid-column: 1; grid-row: auto; }
+}
+
+/* Unified Certificates: a featured card with a layered deck behind it. */
+#projects .certificate-collection-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+#projects .certificate-collection-heading .work-panel-intro { margin: 0; }
+.certificate-carousel-controls { display: flex; align-items: center; gap: 14px; }
+.certificate-carousel-controls[hidden] { display: none; }
+.certificate-carousel-controls button { width: 44px; height: 44px; border: 1px solid #ffa58660; border-radius: 50%; background: #172234; color: #ffc1a7; font-size: 22px; cursor: pointer; }
+.certificate-carousel-controls button:hover { background: #ffa58620; }
+.certificate-position { color: #adbacd; white-space: nowrap; font: 11px Consolas, monospace; }
+#projects .certificate-stack { display: grid; gap: 16px; }
+#projects .certificate-stack.is-carousel { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); padding: 24px clamp(26px, 8vw, 110px) 32px; isolation: isolate; }
+#projects .certificate-stack .credential-entry {
+  grid-template-columns: minmax(120px, .75fr) minmax(0, 1.25fr);
+  grid-template-areas: 'image meta' 'image title' 'image issuer' 'image link';
+  grid-template-rows: auto auto 1fr auto;
+  gap: 14px 24px;
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: 18px;
+  background: linear-gradient(140deg, #293047, #111c2c 80%);
+}
+#projects .certificate-stack.is-carousel .credential-entry {
+  grid-area: 1 / 1;
+  min-height: 290px;
+  transform: translateX(calc(var(--card-offset) * 34px)) scale(calc(1 - var(--card-depth) * .065));
+  opacity: calc(1 - var(--card-depth) * .25);
+  transition: transform .5s cubic-bezier(.22, 1, .36, 1), opacity .4s ease, box-shadow .5s ease, border-color .4s ease;
+}
+#projects .certificate-stack.is-carousel .credential-entry.is-current { border-color: #ffa58690; box-shadow: 0 0 0 1px #ffffff12, 0 12px 40px #00000050, 0 0 28px #8baeff15; }
+#projects .certificate-stack.is-carousel .credential-entry.is-outside { opacity: 0; visibility: hidden; pointer-events: none; }
+#projects .certificate-stack .credential-image { width: 100%; align-self: center; }
+#projects .certificate-stack .credential-image img { width: 100%; height: 220px; object-fit: contain; }
+#projects .certificate-stack .credential-entry h4 { font-size: clamp(18px, 2vw, 24px); line-height: 1.4; }
+#projects .certificate-stack .credential-entry > p { font-size: 13px; line-height: 1.7; }
+#projects .certificate-stack .work-entry-meta { flex-wrap: wrap; gap: 8px; }
+#projects .certificate-stack .work-entry-meta > span { display: block; color: #ffc1a7; font-size: 10px; }
+#projects .certificate-stack .credential-entry .work-drive-link { margin-top: 10px; font-size: 12px; }
+.certificate-carousel-controls button:focus-visible,
+#certificate-stack:focus-visible { outline: 2px solid #ffc1a7; outline-offset: 4px; }
+@media (max-width: 600px) {
+  #projects .certificate-collection-heading { flex-direction: column; align-items: start; }
+  #projects .certificate-stack.is-carousel { padding: 16px 18px 24px; }
+  #projects .certificate-stack .credential-entry { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'meta' 'image' 'title' 'issuer' 'link'; grid-template-rows: auto auto auto 1fr auto; gap: 12px; padding: 18px; }
+  #projects .certificate-stack .credential-image img { height: 180px; }
+  #projects .certificate-stack.is-carousel .credential-entry { transform: translateX(calc(var(--card-offset) * 10px)) scale(calc(1 - var(--card-depth) * .04)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #projects .certificate-stack.is-carousel .credential-entry { transition: none; }
+}
+
 /* Developer community within the shared experience layout. */
 #experience .community-card {
   display: flex;

@@ -24,6 +24,11 @@
     img.before(button);
     button.append(img);
     button.addEventListener('click', () => {
+      if (card.closest('.certificate-stack.is-carousel') && !card.classList.contains('is-current')) return;
+      if (card.closest('[aria-labelledby="appreciation-title"], [aria-labelledby="certifications-title"]') && !card.classList.contains('credential-featured')) {
+        card.dispatchEvent(new Event('feature-award', { bubbles: true }));
+        return;
+      }
       trigger = button;
       title.textContent = name;
       enlarged.src = img.currentSrc || img.src;
@@ -46,6 +51,128 @@
     trigger?.focus({ preventScroll: true });
   });
 })();
+// Unified certificate carousel; all entries remain readable without JavaScript.
+(() => {
+  const stack = document.querySelector('#certificate-stack');
+  if (!stack) return;
+  const cards = [...stack.querySelectorAll('.credential-entry')];
+  const controls = document.querySelector('.certificate-carousel-controls');
+  const position = controls.querySelector('.certificate-position');
+  let current = 0;
+  function select(index) {
+    current = (index + cards.length) % cards.length;
+    cards.forEach((card, i) => {
+      let distance = (i - current + cards.length) % cards.length;
+      if (distance > cards.length / 2) distance -= cards.length;
+      card.style.setProperty('--card-offset', Math.max(-2, Math.min(2, distance)));
+      card.style.setProperty('--card-depth', Math.min(2, Math.abs(distance)));
+      card.style.zIndex = String(5 - Math.abs(distance));
+      card.classList.toggle('is-current', distance === 0);
+      card.classList.toggle('is-outside', Math.abs(distance) > 2);
+      card.inert = distance !== 0;
+      card.setAttribute('aria-hidden', String(distance !== 0));
+    });
+    position.textContent = String(current + 1).padStart(2, '0') + ' / ' + cards.length;
+  }
+  stack.classList.add('is-carousel');
+  controls.hidden = false;
+  controls.querySelectorAll('button').forEach(button => button.addEventListener('click', () => select(current + Number(button.dataset.certificateStep))));
+  stack.addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+    event.preventDefault();
+    const hadFocus = stack.contains(document.activeElement);
+    select(current + (event.key === 'ArrowRight' ? 1 : -1));
+    if (hadFocus) stack.focus({ preventScroll: true });
+  });
+  let touchStart;
+  stack.addEventListener('touchstart', event => { touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY }; }, { passive: true });
+  stack.addEventListener('touchend', event => {
+    if (!touchStart) return;
+    const dx = event.changedTouches[0].clientX - touchStart.x;
+    const dy = event.changedTouches[0].clientY - touchStart.y;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) select(current + (dx < 0 ? 1 : -1));
+    touchStart = null;
+  }, { passive: true });
+  select(0);
+})();
+// Each credential group manages its own featured card and swap animation.
+document.querySelectorAll('[aria-labelledby="appreciation-title"] .credential-grid, [aria-labelledby="certifications-title"] .credential-grid').forEach(grid => {
+  const cards = [...grid.querySelectorAll('.credential-entry')];
+  const status = document.createElement('p');
+  status.className = 'award-selection-status';
+  status.setAttribute('role', 'status');
+  grid.after(status);
+  function updateLabels() {
+    cards.forEach(card => {
+      const selected = card.classList.contains('credential-featured');
+      const titleButton = card.querySelector('.award-select');
+      titleButton.setAttribute('aria-pressed', String(selected));
+      const zoom = card.querySelector('.credential-zoom');
+      if (zoom) {
+        zoom.setAttribute('aria-label', (selected ? 'Perbesar sertifikat ' : 'Tampilkan sebagai sertifikat utama: ') + titleButton.textContent);
+        if (selected) zoom.setAttribute('aria-haspopup', 'dialog');
+        else zoom.removeAttribute('aria-haspopup');
+      }
+    });
+  }
+  const swapAnimations = new Set();
+  function select(card) {
+    const featured = grid.querySelector('.credential-featured');
+    if (!featured || featured === card) return;
+    swapAnimations.forEach(animation => animation.cancel());
+    swapAnimations.clear();
+    const animateSwap = !matchMedia('(prefers-reduced-motion: reduce)').matches && typeof card.animate === 'function';
+    const previousRects = new Map(animateSwap ? cards.map(item => [item, item.getBoundingClientRect()]) : []);
+    const marker = document.createComment('award position');
+    card.before(marker);
+    featured.replaceWith(card);
+    marker.replaceWith(featured);
+    featured.classList.remove('credential-featured');
+    card.classList.add('credential-featured');
+    const badge = featured.querySelector('.credential-featured-label');
+    if (badge) card.append(badge);
+    updateLabels();
+    if (animateSwap) {
+      cards.forEach(item => {
+        const before = previousRects.get(item);
+        const after = item.getBoundingClientRect();
+        if (!after.width || !after.height) return;
+        const animation = item.animate([
+          { transformOrigin: 'top left', transform: `translate(${before.left - after.left}px, ${before.top - after.top}px) scale(${before.width / after.width}, ${before.height / after.height})`, opacity: .7 },
+          { transformOrigin: 'top left', transform: 'translate(0, 0) scale(1, 1)', opacity: 1 },
+        ], { duration: 480, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+        swapAnimations.add(animation);
+        const cleanup = () => swapAnimations.delete(animation);
+        animation.onfinish = cleanup;
+        animation.oncancel = cleanup;
+      });
+      const highlight = card.animate([
+        { boxShadow: '0 0 0 1px #ffa58690, 0 0 30px #ffa58630' },
+        { boxShadow: '0 0 0 0px #ffa58600, 0 0 0px #ffa58600' },
+      ], { duration: 800, easing: 'ease-out' });
+      swapAnimations.add(highlight);
+      const cleanup = () => swapAnimations.delete(highlight);
+      highlight.onfinish = cleanup;
+      highlight.oncancel = cleanup;
+    }
+    card.querySelector('.award-select').focus({ preventScroll: true });
+    status.textContent = card.querySelector('h4').textContent + ' ditampilkan sebagai sertifikat utama.';
+  }
+  cards.forEach(card => {
+    const heading = card.querySelector('h4');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'award-select';
+    button.textContent = heading.textContent;
+    heading.replaceChildren(button);
+    card.addEventListener('feature-award', () => select(card));
+    card.addEventListener('click', event => {
+      if (event.target.closest('a, .credential-zoom')) return;
+      select(card);
+    });
+  });
+  updateLabels();
+});
 // Loop the committee gallery using inert copies on both sides of the real cards.
 (() => {
   const track = document.querySelector('#committee-track');
