@@ -2139,6 +2139,39 @@ body { font-size: 15px; }
   #experience .mini-gallery div { aspect-ratio: 1.8; }
 }
 
+/* Developer community within the shared experience layout. */
+#experience .community-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid #ffffff18;
+  border-radius: 22px;
+  background: radial-gradient(ellipse at top right, #ffa58610, transparent 65%), linear-gradient(135deg, #252f43, #192232);
+}
+#experience .community-symbol {
+  display: grid;
+  place-items: center;
+  flex: 0 0 64px;
+  height: 64px;
+  border: 1px solid #ffa58640;
+  border-radius: 16px;
+  background: #ffa5860a;
+  color: #ffc1a7;
+  font: bold 24px Consolas, monospace;
+}
+#experience .community-copy { flex: 1; min-width: 0; }
+#experience .community-copy .eyebrow { margin: 0 0 8px; font-size: 10px; }
+#experience .community-copy h4 { margin: 0; font-size: clamp(20px, 2.3vw, 28px); line-height: 1.35; }
+#experience .community-copy h4 span { color: #adbacd; font-weight: 400; }
+#experience .community-year { padding: 8px 14px; border: 1px solid #ffa58630; border-radius: 100px; color: #ffc1a7; font: 12px Consolas, monospace; }
+@media (max-width: 520px) {
+  #experience .community-card { flex-wrap: wrap; gap: 16px; }
+  #experience .community-symbol { flex-basis: 48px; height: 48px; font-size: 20px; }
+  #experience .community-year { margin-left: 64px; }
+}
+
 /* Horizontal committee gallery: swipe, keyboard, and arrow navigation. */
 #experience #committee-experience .experience-board {
   position: relative;
@@ -2236,6 +2269,45 @@ body { font-size: 15px; }
 }
 #experience #committee-experience .supervision-gallery a:focus-visible,
 #experience #committee-experience .decoration-gallery a:focus-visible {
+  outline: 2px solid #ffc1a7;
+  outline-offset: 3px;
+}
+/* Portrait documentation: preserve the full composition in matching frames. */
+#experience #committee-experience .supervision-gallery,
+#experience #committee-experience .epiphany-gallery,
+#experience #committee-experience .scientific-oration-gallery,
+#experience #committee-experience .decoration-gallery {
+  align-self: end;
+  align-items: start;
+  gap: 12px;
+  padding-top: 6px;
+}
+#experience #committee-experience .supervision-gallery a,
+#experience #committee-experience .epiphany-gallery a,
+#experience #committee-experience .scientific-oration-gallery a,
+#experience #committee-experience .decoration-gallery a {
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #64708970;
+  background: #101827;
+  box-shadow: 0 6px 18px #00000025;
+}
+#experience #committee-experience .supervision-gallery img,
+#experience #committee-experience .epiphany-gallery img,
+#experience #committee-experience .scientific-oration-gallery img,
+#experience #committee-experience .decoration-gallery img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+#experience #committee-experience .epiphany-gallery a:focus-visible,
+#experience #committee-experience .scientific-oration-gallery a:focus-visible {
   outline: 2px solid #ffc1a7;
   outline-offset: 3px;
 }
