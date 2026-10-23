@@ -2139,6 +2139,15 @@ body { font-size: 15px; }
   #experience .mini-gallery div { aspect-ratio: 1.8; }
 }
 
+/* Certificate media and Drive links; links activate when an href is supplied. */
+#projects .credential-image { margin: 0 0 22px; overflow: hidden; border: 1px solid #ffffff15; border-radius: 12px; background: #121c2c; }
+#projects .credential-image img { display: block; width: 100%; height: auto; aspect-ratio: 640 / 420; object-fit: contain; }
+#projects .credential-image figcaption { padding: 10px 12px; border-top: 1px solid #ffffff10; color: #adbacd; font-size: 11px; line-height: 1.6; }
+#projects .work-drive-link { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 20px; padding: 12px 14px; border: 1px solid #ffa58635; border-radius: 10px; color: #ffc1a7; background: #ffa58608; font-size: 12px; line-height: 1.6; text-decoration: none; }
+#projects .work-drive-link:not([href]) { color: #96a3b8; border-color: #ffffff15; background: #ffffff03; cursor: default; }
+#projects .work-drive-link[href]:hover { background: #ffa58618; border-color: #ffa58680; }
+#projects .work-drive-link:focus-visible { outline: 2px solid #ffc1a7; outline-offset: 4px; }
+
 /* Portfolio entries and credentials. */
 #projects .work-panel-intro { margin: 0 0 24px; color: var(--muted); font-size: 13px; }
 #projects .work-grid,

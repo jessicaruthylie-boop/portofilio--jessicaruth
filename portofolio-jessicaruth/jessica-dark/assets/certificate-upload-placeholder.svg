@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#121c2c"/>
+  <rect x="24" y="24" width="592" height="372" rx="12" fill="none" stroke="#ffa586" stroke-opacity=".3" stroke-dasharray="6 6"/>
+  <g fill="none" stroke="#ffc1a7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="285" y="135" width="70" height="90" rx="6"/>
+    <path d="M300 155h40m-40 15h40m-40 15h24"/>
+    <circle cx="335" cy="205" r="10"/>
+    <path d="m328 213-2 18 9-5 9 5-2-18"/>
+  </g>
+  <text x="320" y="280" text-anchor="middle" fill="#adbacd" font-family="Arial,sans-serif" font-size="18">Tempat gambar sertifikat</text>
+</svg>
