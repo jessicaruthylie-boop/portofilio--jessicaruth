@@ -2176,6 +2176,80 @@ body { font-size: 15px; }
   #projects .credential-entry { transition: none; }
 }
 
+/* Compact portfolio: thumbnail beside details, with quieter visual weight. */
+#projects .work-grid,
+#projects .credential-grid { gap: 12px; }
+#projects .work-entry,
+#projects .credential-entry {
+  padding: 20px;
+  border-radius: 12px;
+  background: #1b2434;
+  border-color: #ffffff12;
+  box-shadow: none;
+}
+#projects .credential-entry {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  grid-template-areas: 'image meta' 'image title' 'image issuer' 'image link';
+  grid-template-rows: auto auto 1fr auto;
+  column-gap: 18px;
+  row-gap: 7px;
+  align-content: start;
+}
+#projects .credential-image {
+  grid-area: image;
+  align-self: start;
+  position: relative;
+  margin: 0;
+  border-radius: 8px;
+}
+#projects .credential-image img { height: 92px; aspect-ratio: auto; object-fit: contain; }
+#projects .credential-image figcaption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+#projects .credential-entry .work-entry-meta { grid-area: meta; margin: 0; font-size: 9px; letter-spacing: .3px; color: #aeb9cc; }
+#projects .work-entry-meta time { padding: 0; border: 0; border-radius: 0; color: #aeb9cc; }
+#projects .credential-entry h4 { grid-area: title; margin: 0; font-size: 15px; line-height: 1.5; }
+#projects .credential-entry > p { grid-area: issuer; margin: 0; font-size: 12px; line-height: 1.6; }
+#projects .credential-entry .work-drive-link { grid-area: link; }
+#projects .work-drive-link {
+  justify-content: flex-start;
+  justify-self: start;
+  margin-top: 8px;
+  padding: 6px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 11px;
+}
+#projects .work-drive-link:not([href]) { background: transparent; color: #8e9bb0; }
+#projects .work-drive-link:not([href]) span { display: none; }
+#projects .work-drive-link[href]:hover { background: transparent; text-decoration: underline; text-underline-offset: 4px; }
+#projects .work-entry .work-entry-meta { margin-bottom: 14px; font-size: 9px; }
+#projects .work-entry h3 { font-size: 18px; margin-bottom: 16px; }
+#projects .work-contribution { padding-top: 12px; font-size: 12px; }
+#projects .credential-group + .credential-group { margin-top: 28px; }
+#projects .credential-group > h3 { margin-bottom: 14px; font-size: 18px; }
+#projects .work-panel-intro { margin-bottom: 20px; font-size: 12px; }
+@media (max-width: 1100px) {
+  #projects .credential-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  #projects .credential-entry { grid-template-columns: 76px minmax(0, 1fr); column-gap: 12px; padding: 15px; }
+  #projects .credential-image img { height: 76px; }
+  #projects .credential-entry .work-entry-meta { flex-wrap: wrap; gap: 4px 10px; }
+  #projects .credential-entry h4 { font-size: 14px; }
+  #projects .work-entry { padding: 18px; }
+}
+
 /* Developer community within the shared experience layout. */
 #experience .community-card {
   display: flex;
