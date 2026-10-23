@@ -1174,9 +1174,9 @@ dialog p {
   animation-play-state: paused;
 }
 
-/* 50 teknologi: 25 logo per baris, tanpa kontrol tambahan. */
+/* 25 teknologi dibagi dalam dua baris dengan lebar sesuai isinya. */
 .marquee.is-animated .tech-list {
-  width: 3750px;
+  width: max-content;
   justify-content: flex-start;
   gap: 0;
   padding: 0;
@@ -1196,7 +1196,7 @@ dialog p {
 }
 @media (max-width: 760px) {
   .marquee.is-animated .tech-list {
-    width: 3250px;
+    width: max-content;
   }
   .marquee.is-animated .tech-list li {
     width: 130px;
@@ -1432,7 +1432,8 @@ dialog p {
   place-items: center;
   flex: 0 0 auto;
 }
-.tech-icon svg {
+.tech-icon svg,
+.tech-icon img {
   width: 46px;
   height: 46px;
   display: block;
@@ -1634,13 +1635,15 @@ dialog p {
 }
 
 /* Logo glow */
-.technologies .tech-icon svg {
+.technologies .tech-icon svg,
+.technologies .tech-icon img {
   transition:
     transform 0.3s ease,
     filter 0.3s ease;
 }
 
-.technologies .tech-list li:hover .tech-icon svg {
+.technologies .tech-list li:hover .tech-icon svg,
+.technologies .tech-list li:hover .tech-icon img {
   transform: scale(1.15);
   filter: drop-shadow(0 0 10px #ffa58690);
 }
@@ -1682,7 +1685,8 @@ dialog p {
   }
 
   .technologies .tech-icon,
-  .technologies .tech-icon svg {
+  .technologies .tech-icon svg,
+  .technologies .tech-icon img {
     width: 38px;
     height: 38px;
   }
@@ -1691,7 +1695,8 @@ dialog p {
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .technologies .tech-list li,
-  .technologies .tech-icon svg {
+  .technologies .tech-icon svg,
+  .technologies .tech-icon img {
     transition: none;
   }
 }

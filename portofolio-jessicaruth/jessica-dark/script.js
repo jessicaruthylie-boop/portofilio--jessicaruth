@@ -78,7 +78,7 @@ function startTyping() {
   typingTimer = setTimeout(tick, 3000);
 }
 startTyping();
-// Dua baris berlawanan arah; masing-masing memuat 25 teknologi.
+// Dua baris berlawanan arah; menampilkan total 25 teknologi yang pernah digunakan.
 const marquees = [...document.querySelectorAll(".marquee")];
 const marqueeClones = marquees.map((marquee) => {
   const track = marquee.querySelector(".marquee-track");
