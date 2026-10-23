@@ -2431,11 +2431,11 @@ dialog.credential-viewer .credential-viewer-image { display: block; width: 100%;
 }
 
 /* Light blur leaves the backdrop recognizable while the certificate stays sharp. */
-#projects .credential-image.certificate-soft-backdrop { position: relative; isolation: isolate; overflow: hidden; }
-#projects .certificate-soft-backdrop::before { content: ''; position: absolute; inset: -14px; z-index: -1; background: var(--certificate-backdrop) center / cover; transform: scale(1.08); filter: blur(2px) brightness(.75); opacity: .8; pointer-events: none; }
+#projects .credential-image.certificate-soft-backdrop { position: relative; isolation: isolate; overflow: hidden; background: #f4f5f8; border-color: #ffffff65; }
+#projects .certificate-soft-backdrop::before { content: ''; position: absolute; inset: -14px; z-index: -1; background: var(--certificate-backdrop) center / cover; transform: scale(1.08); filter: blur(2px) brightness(1.08); opacity: .6; pointer-events: none; }
 #projects .certificate-soft-backdrop .credential-zoom,
 #projects .certificate-soft-backdrop .credential-zoom:hover { background: transparent; }
-#projects .certificate-soft-backdrop img { position: relative; filter: drop-shadow(0 4px 9px #00000060); }
+#projects .certificate-soft-backdrop img { position: relative; filter: drop-shadow(0 4px 9px #26334d30); }
 
 /* Developer community within the shared experience layout. */
 #experience .community-card {
