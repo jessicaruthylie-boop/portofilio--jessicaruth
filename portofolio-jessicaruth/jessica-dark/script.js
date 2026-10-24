@@ -211,7 +211,7 @@ const CONTACTS = {
     value: "https://github.com/jessicaruthylie-boop",
     label: "@jessicaruthylie-boop",
   },
-  linkedin: { value: "https://www.linkedin.com/in/jessicaruthabigael/", label: "@jessicaruthabigael" },
+  linkedin: { value: "https://www.linkedin.com/in/jessicaruthabigael", label: "@jessicaruthabigael" },
   whatsapp: { value: "https://wa.me/6283151365014", label: "+6283151365014" },
 };
 document.documentElement.classList.add("js");
