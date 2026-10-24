@@ -211,8 +211,8 @@ const CONTACTS = {
     value: "https://github.com/jessicaruthylie-boop",
     label: "@jessicaruthylie-boop",
   },
-  linkedin: { value: "", label: "" },
-  instagram: { value: "", label: "" },
+  linkedin: { value: "https://www.linkedin.com/in/jessicaruthabigael/", label: "@jessicaruthabigael" },
+  whatsapp: { value: "https://wa.me/6283151365014", label: "+6283151365014" },
 };
 document.documentElement.classList.add("js");
 const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
