@@ -206,7 +206,7 @@ document.querySelectorAll('[aria-labelledby="appreciation-title"] .credential-gr
 })();
 // Isi data asli di bawah ini untuk mengaktifkan kontak. Biarkan kosong jika belum tersedia.
 const CONTACTS = {
-  email: { value: "", label: "" },
+  email: { value: "jessicaruthylie@gmail.com", label: "jessicaruthylie@gmail.com" },
   github: {
     value: "https://github.com/jessicaruthylie-boop",
     label: "@jessicaruthylie-boop",
@@ -410,7 +410,7 @@ Object.entries(CONTACTS).forEach(([key, data]) => {
   let href;
   if (key === "email") {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.value)) return;
-    href = "mailto:" + data.value;
+    href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(data.value);
   } else {
     try {
       const url = new URL(data.value);
@@ -423,10 +423,8 @@ Object.entries(CONTACTS).forEach(([key, data]) => {
   const link = document.createElement("a");
   link.className = item.className;
   link.href = href;
-  if (key !== "email") {
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-  }
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
   while (item.firstChild) link.append(item.firstChild);
   link.querySelector("span").textContent = data.label || data.value;
   item.replaceWith(link);
