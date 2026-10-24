@@ -1,0 +1,1645 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Portofolio Jessica Ruth Abigael — mahasiswa D3 Teknologi Komputer."
+    />
+    <title>Jessica.dev — Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="education-universe.css" />
+    <script src="script.js" defer></script>
+    <script src="education-universe.js" defer></script>
+    <style>
+      /* Education side panel layout; other website sections are unchanged. */
+      #education .au2-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        align-items: center;
+        gap: clamp(24px, 5vw, 76px);
+        min-height: 560px;
+      }
+      #education .au2-info {
+        min-width: 0;
+        border-left: 2px solid #ffa58670;
+        padding: 25px 0 25px 26px;
+        text-align: left;
+      }
+      #education .au2-info-empty > span,
+      #education .au2-info-top > span,
+      #education .au2-info-location-label {
+        color: #ffa586;
+        letter-spacing: 1.5px;
+        font-size: 11px;
+      }
+      #education .au2-info h3 {
+        color: #fff1e9;
+        font-size: clamp(22px, 2.4vw, 32px);
+        line-height: 1.22;
+        margin: 17px 0 12px;
+      }
+      #education .au2-accent {
+        color: #ffa586;
+      }
+      #education .au2-info p {
+        color: #adbacd;
+        font-size: 13px;
+        line-height: 1.8;
+      }
+      #education .au2-info-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      #education #au2-info-close {
+        background: transparent;
+        border: 0;
+        color: #fff1e9;
+        font-size: 27px;
+        cursor: pointer;
+      }
+      #education #au2-info-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin: 22px 0;
+        padding: 16px 0;
+        border-block: 1px solid #ffffff25;
+      }
+      #education .au2-info-stat-label {
+        display: block;
+        color: #aeb8c9;
+        font:
+          10px Consolas,
+          monospace;
+        margin-bottom: 8px;
+      }
+      #education .au2-info-stat-value {
+        display: block;
+        color: #fff1e9;
+        font-size: 13px;
+        overflow-wrap: anywhere;
+      }
+      #education .au2-info-map {
+        height: 185px;
+        border-radius: 9px;
+        border: 1px solid #ffffff24;
+        overflow: hidden;
+      }
+      #education .au2-info-map iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      #education #au2-info-map-link {
+        display: inline-block;
+        color: #ffa586;
+        font-size: 13px;
+        margin-top: 12px;
+      }
+      #education .au2-info-content[hidden],
+      #education .au2-info-empty[hidden] {
+        display: none !important;
+      }
+      #education .au2-orbit-area {
+        min-width: 0;
+      }
+      #education .au2-ring,
+      #education .au2-center {
+        pointer-events: none;
+      }
+      #education .au2-orbiter {
+        z-index: 5;
+      }
+      #education .au2-choice {
+        cursor: pointer;
+        position: relative;
+        z-index: 6;
+        pointer-events: auto;
+      }
+      #education .au2-choice:focus-visible {
+        outline: 2px solid #ffa586;
+        outline-offset: 5px;
+      }
+      #education .au2-choice[aria-pressed="true"] strong {
+        color: #ffa586;
+      }
+      #education .au2.has-selection .au2-orbiter,
+      #education .au2.has-selection .au2-satellite,
+      #education .au2.has-selection .au2-choice {
+        animation-play-state: paused !important;
+      }
+      @media (max-width: 900px) {
+        #education .au2-layout {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+        #education .au2-orbit-area {
+          order: 1;
+        }
+        #education .au2-info {
+          order: 2;
+          margin-top: 14px;
+        }
+      }
+      @media (max-width: 460px) {
+        #education #au2-info-stats {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Lewati navigasi</a>
+    <div class="ambient" aria-hidden="true"></div>
+    <header class="header">
+      <nav class="nav wrap" aria-label="Navigasi utama">
+        <a class="brand" href="#home">Jessica<span>.dev</span></a
+        ><button
+          class="menu-button"
+          type="button"
+          aria-label="Buka menu"
+          aria-controls="nav-menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <div class="nav-menu" id="nav-menu">
+          <a href="#home" aria-current="location">Home</a
+          ><a href="#experience">Organizations &amp; Experience</a
+          ><a href="#projects">Certificates &amp; Projects</a
+          ><a href="#contact">Contact <span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <section id="home" class="home wrap">
+        <div class="hero">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">
+              <span class="status-dot"></span> HELLO WORLD, I'M
+            </p>
+            <h1>Jessica<br /><span>Ruth Abigael.</span></h1>
+            <p class="role">
+              <span aria-hidden="true">&gt; </span
+              ><span id="typed">Computer Technology Student</span
+              ><span class="caret" aria-hidden="true">▏</span>
+            </p>
+            <p class="intro">Del Institute of Technology</p>
+            <a
+              class="primary-button"
+              href="https://github.com/jessicaruthylie-boop"
+              target="_blank"
+              rel="noopener noreferrer"
+              >My GitHub <span aria-hidden="true">↗</span></a
+            >
+          </div>
+          <div class="portrait-stage reveal">
+            <span class="code-float code-a" aria-hidden="true">&lt;/&gt;</span
+            ><span class="code-float code-b" aria-hidden="true">{ }</span>
+            <div class="portrait-frame">
+              <div class="portrait-inner">
+                <div class="photo-fallback" id="photo-fallback" hidden>
+                  <span class="photo-initial">J<span>.</span></span
+                  ><span class="mono">YOUR PHOTO HERE</span>
+                </div>
+                <!-- Simpan foto-jessica.png di folder yang sama; foto tanpa latar disarankan. --><img
+                  id="profile-photo"
+                  src="foto-jessica.png"
+                  alt="Foto Jessica Ruth Abigael"
+                />
+              </div>
+              <div class="portrait-caption">
+                <span class="status-dot"></span
+                ><span>Learning. Building. Growing.</span>
+              </div>
+            </div>
+            <span class="coordinate mono" aria-hidden="true"
+              >&lt;student /&gt;</span
+            >
+          </div>
+          <div class="about-copy reveal">
+            <p class="eyebrow">A LITTLE ABOUT ME</p>
+            <h2>Curious mind.<br />Always learning<span>.</span></h2>
+            <p class="intro">
+              Saya mahasiswa D3 Teknologi Komputer yang terus belajar melalui
+              perkuliahan, praktik, dan proyek.
+            </p>
+            <!-- EDIT BIODATA DI SINI -->
+            <dl class="bio">
+              <div>
+                <dt>Nama</dt>
+                <dd>Jessica Ruth Abigael</dd>
+              </div>
+              <div>
+                <dt>Jurusan</dt>
+                <dd>D3 Teknologi Komputer</dd>
+              </div>
+              <div>
+                <dt>Tanggal lahir</dt>
+                <dd>4 Januari 2007</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <section class="technologies reveal" aria-labelledby="tech-title">
+          <div class="small-heading">
+            <div>
+              <p class="eyebrow">CURIOSITY IN MOTION</p>
+              <h2 id="tech-title">Exploring Technologies</h2>
+            </div>
+          </div>
+          <div class="marquee-pair">
+            <div
+              class="marquee"
+              tabindex="0"
+              aria-label="Teknologi yang dieksplorasi, baris 1"
+            >
+              <div class="marquee-track">
+                <ul class="tech-list">
+                  <li>
+                    <span class="tech-icon tech-icon-c"
+                      ><img
+                        src="assets/icons/c.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>C</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-html5"
+                      ><img
+                        src="assets/icons/html5.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>HTML5</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-css3"
+                      ><img
+                        src="assets/icons/css3.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>CSS3</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-javascript"
+                      ><img
+                        src="assets/icons/javascript.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>JavaScript</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-nodejs"
+                      ><img
+                        src="assets/icons/nodejs.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Node.js</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-nextjs"
+                      ><img
+                        src="assets/icons/nextjs.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Next.js</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-tailwindcss"
+                      ><img
+                        src="assets/icons/tailwindcss.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Tailwind CSS</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-react"
+                      ><img
+                        src="assets/icons/react.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>React</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-laravel"
+                      ><img
+                        src="assets/icons/laravel.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Laravel</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-php"
+                      ><img
+                        src="assets/icons/php.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>PHP</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-go"
+                      ><img
+                        src="assets/icons/go.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Go (Golang)</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-mysql"
+                      ><img
+                        src="assets/icons/mysql.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>MySQL</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-jupyter"
+                      ><img
+                        src="assets/icons/jupyter.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Jupyter</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div
+              class="marquee marquee-reverse"
+              tabindex="0"
+              aria-label="Teknologi yang dieksplorasi, baris 2"
+            >
+              <div class="marquee-track">
+                <ul class="tech-list">
+                  <li>
+                    <span class="tech-icon tech-icon-supabase"
+                      ><img
+                        src="assets/icons/supabase.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Supabase</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-mongodb"
+                      ><img
+                        src="assets/icons/mongodb.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>MongoDB</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-postgresql"
+                      ><img
+                        src="assets/icons/postgresql.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>PostgreSQL</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-figma"
+                      ><img
+                        src="assets/icons/figma.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Figma</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-rockylinux"
+                      ><img
+                        src="assets/icons/rockylinux.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Rocky Linux</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-googlecloud"
+                      ><img
+                        src="assets/icons/googlecloud.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Google Cloud</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-docker"
+                      ><img
+                        src="assets/icons/docker.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Docker</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-staruml"
+                      ><img
+                        src="assets/icons/staruml.ico"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>StarUML</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-visualparadigm"
+                      ><img
+                        src="assets/icons/visualparadigm.ico"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Visual Paradigm</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-bizagi"
+                      ><img
+                        src="assets/icons/bizagi.ico"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Bizagi</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-java"
+                      ><img
+                        src="assets/icons/java.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Java</span>
+                  </li>
+                  <li>
+                    <span class="tech-icon tech-icon-python"
+                      ><img
+                        src="assets/icons/python.svg"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy" /></span
+                    ><span>Python</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- EDUCATION: full-width academic journey -->
+      <section
+        id="education"
+        class="section education"
+        aria-labelledby="education-title"
+      >
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">01 / MY LEARNING JOURNEY</p>
+            <h2 id="education-title">Academic Journey<span>.</span></h2>
+          </div>
+          <p>Two places. One continuous journey of learning.</p>
+        </div>
+
+        <div
+          class="au2"
+          id="academic-universe"
+          aria-label="Interactive academic journey"
+        >
+          <div class="au2-layout">
+            <!-- Academic details for the selected institution. -->
+            <aside id="au2-info" class="au2-info" aria-live="polite">
+              <div class="au2-info-empty">
+                <span>EDUCATION / BACKGROUND</span>
+                <h3>
+                  A foundation in technology<span class="au2-accent">.</span>
+                </h3>
+                <p>
+                  Dari pendidikan MIPA hingga Teknologi Komputer, perjalanan
+                  akademik saya berfokus pada pengembangan pengetahuan dan
+                  keterampilan di bidang teknologi.
+                </p>
+                <dl class="au2-overview">
+                  <div>
+                    <dt>PROGRAM STUDI</dt>
+                    <dd>D3 Teknologi Komputer</dd>
+                  </div>
+                  <div>
+                    <dt>INSTITUSI</dt>
+                    <dd>Institut Teknologi Del</dd>
+                  </div>
+                  <div>
+                    <dt>LATAR BELAKANG</dt>
+                    <dd>Matematika &amp; IPA</dd>
+                  </div>
+                </dl>
+                <p class="au2-overview-hint">
+                  Pilih kartu institusi untuk melihat detail dan lokasi.
+                </p>
+              </div>
+              <div class="au2-info-content" hidden>
+                <div class="au2-info-top">
+                  <span id="au2-info-category"></span>
+                  <button
+                    id="au2-info-close"
+                    type="button"
+                    aria-label="Tutup informasi"
+                  >
+                    &times;
+                  </button>
+                </div>
+                <h3 id="au2-info-name"></h3>
+                <p id="au2-info-program"></p>
+                <div id="au2-info-stats"></div>
+                <p class="au2-info-location-label">INSTITUTION LOCATION</p>
+                <div class="au2-info-map">
+                  <iframe
+                    id="au2-info-map-frame"
+                    title="Lokasi institusi"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+                <a
+                  id="au2-info-map-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Lihat Peta di Google Maps ↗</a
+                >
+              </div>
+            </aside>
+
+            <!-- Institution cards open the academic detail panel. -->
+            <div class="au2-orbit-area">
+              <div class="au2-stage">
+                <div class="au2-ring au2-ring-outer" aria-hidden="true"></div>
+                <div class="au2-ring au2-ring-inner" aria-hidden="true"></div>
+                <div class="au2-center" aria-hidden="true">
+                  <span class="au2-symbol">✳</span>
+                  <strong>Education</strong>
+                  <small>My Journey</small>
+                </div>
+                <div class="au2-orbiter au2-orbiter-one">
+                  <div class="au2-satellite">
+                    <button
+                      type="button"
+                      class="au2-choice"
+                      data-au2="methodist"
+                      aria-pressed="false"
+                    >
+                      <span class="au2-card-icon" aria-hidden="true"
+                        ><svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path
+                            d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6M9 10h.01M15 10h.01M12 4V1h5l-1 1.5L17 4h-5"
+                          /></svg
+                      ></span>
+                      <span class="au2-index">01 / HIGH SCHOOL</span>
+                      <strong>SMAS Methodist 5</strong>
+                      <small>Medan &middot; Pendidikan Menengah Atas</small>
+                      <span class="au2-card-description"
+                        >Fondasi akademik dalam matematika dan ilmu pengetahuan
+                        alam.</span
+                      >
+                      <span class="au2-card-tag">MIPA</span>
+                      <span class="au2-action">View details ↗</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="au2-orbiter au2-orbiter-two">
+                  <div class="au2-satellite">
+                    <button
+                      type="button"
+                      class="au2-choice"
+                      data-au2="del"
+                      aria-pressed="false"
+                    >
+                      <span class="au2-card-icon" aria-hidden="true"
+                        ><svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path
+                            d="m2 8 10-5 10 5-10 5L2 8ZM6 10v6c4 3 8 3 12 0v-6M22 8v8"
+                          /></svg
+                      ></span>
+                      <span class="au2-index">02 / UNIVERSITY</span>
+                      <strong>Institut Teknologi Del</strong>
+                      <small>D3 Teknologi Komputer</small>
+                      <span class="au2-card-description"
+                        >Pendidikan vokasi untuk mengembangkan pengetahuan dan
+                        keterampilan di bidang teknologi komputer.</span
+                      >
+                      <span class="au2-card-tag">Diploma III</span>
+                      <span class="au2-action">View details ↗</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <p class="au2-hint">SELECT AN INSTITUTION TO EXPLORE</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        id="experience"
+        class="section wrap"
+        aria-labelledby="experience-title"
+      >
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">02 / BEYOND THE CLASSROOM</p>
+            <h2 id="experience-title">
+              Organizations<br />&amp; Experience<span>.</span>
+            </h2>
+          </div>
+          <p>
+            Belajar memimpin, berkolaborasi, dan bertumbuh melalui organisasi
+            serta kepanitiaan di Institut Teknologi Del.
+          </p>
+        </div>
+        <div class="journey-layout">
+          <section
+            id="organizations"
+            class="journey-section"
+            aria-labelledby="organizations-title"
+          >
+            <div class="journey-section-heading">
+              <div>
+                <p class="eyebrow">LEADERSHIP &amp; COMMUNITY</p>
+                <h3 id="organizations-title">Organisasi<span>.</span></h3>
+              </div>
+              <span class="journey-count">02 / ORGANIZATIONS</span>
+            </div>
+            <div class="organization-timeline">
+              <article class="journey-card">
+                <div class="journey-year">
+                  <span>2025</span><small>01</small>
+                </div>
+                <div class="journey-content">
+                  <div class="journey-meta">
+                    <span class="badge">Institut Teknologi Del</span
+                    ><span class="journey-date">Oktober 2025 — Sekarang</span>
+                  </div>
+                  <p class="organization-name">
+                    HIMATEK
+                    <span>/ Computer Technology Student Association</span>
+                  </p>
+                  <h4>Ketua Divisi Akademik</h4>
+                  <p class="journey-description">
+                    Memimpin program akademik untuk meningkatkan pembelajaran
+                    dan keterampilan teknis mahasiswa.
+                  </p>
+                  <ul class="journey-responsibilities">
+                    <li>
+                      Mengoordinasikan tutor sebaya, workshop, dan sumber
+                      belajar.
+                    </li>
+                    <li>
+                      Berkolaborasi dengan dosen dan tim mahasiswa untuk
+                      mendukung pengembangan akademik.
+                    </li>
+                  </ul>
+                </div>
+              </article>
+              <article class="journey-card">
+                <div class="journey-year">
+                  <span>2025</span><small>02</small>
+                </div>
+                <div class="journey-content">
+                  <div class="journey-meta">
+                    <span class="badge">Institut Teknologi Del</span
+                    ><span class="journey-date">Juli 2025 — Sekarang</span>
+                  </div>
+                  <p class="organization-name">
+                    PERKANTAS <span>/ Student Christian Fellowship</span>
+                  </p>
+                  <h4>Anggota</h4>
+                  <p class="journey-description">
+                    Berpartisipasi dalam program pengembangan kepemimpinan dan
+                    karakter untuk pertumbuhan pribadi dan profesional.
+                  </p>
+                  <ul class="journey-responsibilities">
+                    <li>
+                      Mengikuti mentoring dan kegiatan kolaboratif bersama
+                      mahasiswa.
+                    </li>
+                    <li>
+                      Mengembangkan komunikasi, kerja sama tim, dan keterampilan
+                      interpersonal.
+                    </li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section
+            id="committee-experience"
+            class="journey-section"
+            aria-labelledby="committee-title"
+          >
+            <div class="journey-section-heading">
+              <div>
+                <p class="eyebrow">CONTRIBUTING THROUGH EVENTS</p>
+                <h3 id="committee-title">
+                  Pengalaman Kepanitiaan<span>.</span>
+                </h3>
+              </div>
+              <div class="committee-navigation">
+                <span class="journey-count">04 / EXPERIENCES</span>
+                <div class="committee-arrows" hidden>
+                  <button
+                    type="button"
+                    data-committee-direction="-1"
+                    aria-label="Geser ke pengalaman sebelumnya"
+                    aria-controls="committee-track"
+                  >
+                    &#8592;
+                  </button>
+                  <button
+                    type="button"
+                    data-committee-direction="1"
+                    aria-label="Geser ke pengalaman berikutnya"
+                    aria-controls="committee-track"
+                  >
+                    &#8594;
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="experience-board"
+              id="committee-track"
+              tabindex="0"
+              role="region"
+              aria-label="Galeri pengalaman kepanitiaan, geser untuk melihat kegiatan lainnya"
+            >
+              <article class="experience-tile">
+                <div class="experience-topline">
+                  <span>KEPANITIAAN / 2025</span
+                  ><span aria-hidden="true">01</span>
+                </div>
+                <h4>SSC &amp; Del Institute of Technology Joint Olympiad</h4>
+                <p class="event-name">Supervision Division Member</p>
+                <p class="event-role">Anggota Divisi Pengawasan</p>
+                <div
+                  class="mini-gallery supervision-gallery"
+                  aria-label="Dokumentasi SSC dan Del Institute of Technology Joint Olympiad"
+                >
+                  <a
+                    href="assets/supervision/supervision-1.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Buka foto dokumentasi Joint Olympiad 1 dalam ukuran penuh"
+                  >
+                    <img
+                      src="assets/supervision/supervision-1.jpg"
+                      alt="Dokumentasi kegiatan SSC dan Del Institute of Technology Joint Olympiad, foto 1"
+                      width="960"
+                      height="1280"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="assets/supervision/supervision-2.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Buka foto dokumentasi Joint Olympiad 2 dalam ukuran penuh"
+                  >
+                    <img
+                      src="assets/supervision/supervision-2.jpg"
+                      alt="Dokumentasi kegiatan SSC dan Del Institute of Technology Joint Olympiad, foto 2"
+                      width="2316"
+                      height="3088"
+                      loading="lazy"
+                    />
+                  </a>
+                </div>
+              </article>
+              <article class="experience-tile">
+                <div class="experience-topline">
+                  <span>KEPANITIAAN / 2026</span
+                  ><span aria-hidden="true">02</span>
+                </div>
+                <h4>Epiphany Celebration Committee ITDEL</h4>
+                <p class="event-name">Escort Division</p>
+                <p class="event-role">Divisi Pendamping</p>
+                <div
+                  class="mini-gallery epiphany-gallery"
+                  aria-label="Dokumentasi Epiphany Celebration Committee ITDEL"
+                >
+                  <a
+                    href="assets/epiphany/epiphany-1.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Buka foto Epiphany Celebration 1 dalam ukuran penuh"
+                  >
+                    <img
+                      src="assets/epiphany/epiphany-1.jpg"
+                      alt="Foto bersama panitia Epiphany Celebration ITDEL, foto 1"
+                      width="960"
+                      height="1280"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="assets/epiphany/epiphany-2.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Buka foto Epiphany Celebration 2 dalam ukuran penuh"
+                  >
+                    <img
+                      src="assets/epiphany/epiphany-2.jpg"
+                      alt="Foto bersama panitia Epiphany Celebration ITDEL, foto 2"
+                      width="960"
+                      height="1280"
+                      loading="lazy"
+                    />
+                  </a>
+                </div>
+              </article>
+              <article class="experience-tile">
+                <div class="experience-topline">
+                  <span>KEPANITIAAN / 2026</span
+                  ><span aria-hidden="true">03</span>
+                </div>
+                <h4>Scientific Oration Committee ITDEL</h4>
+                <p class="event-name">Escort Division</p>
+                <p class="event-role">Divisi Pendamping</p>
+                <div
+                  class="mini-gallery scientific-oration-gallery"
+                  aria-label="Dokumentasi Scientific Oration Committee ITDEL"
+                >
+                  <a
+                    href="scientific-oration/scientific-oration-1.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Buka foto Scientific Oration 1 dalam ukuran penuh"
+                  >
+                    <img
+                      src="scientific-oration/scientific-oration-1.jpg"
+                      alt="Foto bersama panitia Scientific Oration ITDEL, foto 1"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="scientific-oration/scientific-oration-2.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Buka foto Scientific Oration 2 dalam ukuran penuh"
+                  >
+                    <img
+                      src="scientific-oration/scientific-oration-2.jpg"
+                      alt="Foto bersama panitia Scientific Oration ITDEL, foto 2"
+                      loading="lazy"
+                    />
+                  </a>
+                </div>
+              </article>
+              <article class="experience-tile">
+                <div class="experience-topline">
+                  <span
+                    >KEPANITIAAN /
+                    <time datetime="2025-09">SEPTEMBER 2025</time></span
+                  >
+                  <span aria-hidden="true">04</span>
+                </div>
+                <h4>
+                  19th Del Institute of Technology Inauguration, Graduation
+                  &amp; Anniversary Celebration
+                </h4>
+                <p class="event-name">Decoration Committee Member</p>
+                <p class="event-role">Anggota Panitia Dekorasi</p>
+                <div
+                  class="mini-gallery decoration-gallery"
+                  aria-label="Dokumentasi kepanitiaan Inauguration, Graduation dan Anniversary ITDEL ke-19"
+                >
+                  <a
+                    href="assets/decoration/decoration-1.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Buka foto kepanitiaan dekorasi 1 dalam ukuran penuh"
+                  >
+                    <img
+                      src="assets/decoration/decoration-1.jpg"
+                      alt="Dokumentasi Jessica sebagai panitia dekorasi perayaan ITDEL ke-19, foto 1"
+                      width="960"
+                      height="1280"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="assets/decoration/decoration-2.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Buka foto kepanitiaan dekorasi 2 dalam ukuran penuh"
+                  >
+                    <img
+                      src="assets/decoration/decoration-2.jpg"
+                      alt="Dokumentasi Jessica sebagai panitia dekorasi perayaan ITDEL ke-19, foto 2"
+                      width="960"
+                      height="1280"
+                      loading="lazy"
+                    />
+                  </a>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section
+            id="developer-community"
+            class="journey-section"
+            aria-labelledby="community-title"
+          >
+            <div class="journey-section-heading">
+              <div>
+                <p class="eyebrow">LEARNING WITH THE COMMUNITY</p>
+                <h3 id="community-title">Developer Community<span>.</span></h3>
+              </div>
+              <span class="journey-count">01 / COMMUNITY</span>
+            </div>
+            <article class="community-card">
+              <a
+                class="community-logo"
+                href="https://gdg.community.dev/u/mm3yek/#/about"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Lihat profil GDG Jessica (tab baru)"
+              >
+                <img
+                  src="assets/icons/gdg.svg"
+                  alt="Google Developer Groups"
+                  width="416"
+                  height="60"
+                  loading="lazy"
+                />
+              </a>
+              <div class="community-copy">
+                <p class="eyebrow">DEVELOPER COMMUNITY</p>
+                <h4>Google Developer Group <span>(GDG)</span></h4>
+                <a
+                  class="community-profile"
+                  href="https://gdg.community.dev/u/mm3yek/#/about"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Lihat profil GDG <span aria-hidden="true">&#8599;</span></a
+                >
+              </div>
+              <time class="community-year" datetime="2026">2026</time>
+            </article>
+          </section>
+        </div>
+      </section>
+      <section id="projects" class="section wrap">
+        <div class="portfolio-heading">
+          <div class="section-heading reveal">
+            <div>
+              <p class="eyebrow">03 / THINGS I CREATE &amp; LEARN</p>
+              <h2>Certificates &amp;<br />Projects<span>.</span></h2>
+              <p class="portfolio-subtitle">
+                Achievements, learning, and selected works that shape my
+                journey.
+              </p>
+            </div>
+          </div>
+          <div class="tabs" id="project-tabs" aria-label="Jenis karya" hidden>
+            <button
+              type="button"
+              id="certificates-tab"
+              aria-controls="certificates-panel"
+              aria-selected="true"
+            >
+              Certificates
+            </button>
+            <button
+              type="button"
+              id="projects-tab"
+              aria-controls="projects-panel"
+              aria-selected="false"
+            >
+              Projects
+            </button>
+          </div>
+        </div>
+        <div id="certificates-panel">
+          <h3 class="no-js-label">Certificates</h3>
+          <div class="certificate-collection-heading">
+            <div class="certificate-collection-copy">
+              <p class="eyebrow">12 / CERTIFICATES</p>
+              <h3>Certificates<span>.</span></h3>
+              <p class="work-panel-intro">
+                Penghargaan, sertifikasi, dan pelatihan dalam perjalanan belajar
+                saya.
+              </p>
+            </div>
+          </div>
+          <div
+            id="certificate-stack"
+            class="certificate-stack"
+            role="region"
+            aria-label="Galeri Certificates"
+          >
+            <article class="credential-entry">
+              <figure class="credential-image">
+                <img
+                  src="assets/hcia-storage-v5.png"
+                  alt="Sertifikat HCIA-Storage V5.0 Course untuk Jessica Ruth Abigael"
+                  width="640"
+                  height="420"
+                  loading="lazy"
+                />
+                <figcaption>
+                  HCIA-Storage V5.0 Course ? Jessica Ruth Abigael
+                </figcaption>
+              </figure>
+              <div class="work-entry-meta">
+                <span>Certification</span><time datetime="2026">2026</time>
+              </div>
+              <h4>HCIA-Storage V5.0 Course</h4>
+              <p>HCIA-Storage V5.0</p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1Out3J3zmdJUGjdlPlJi_2pnHFvWB-M_V/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="credential-entry">
+              <!-- Ganti src dengan lokasi gambar sertifikat ini, misalnya assets/certificates/nama-sertifikat.jpg. -->
+              <figure class="credential-image">
+                <img
+                  src="assets/del-ai-hackathon-2026.jpg"
+                  alt="Certificate of Appreciation Del Artificial Intelligence Hackathon 2026 untuk Jessica Ruth Abigael, Team Lamport"
+                  loading="lazy"
+                />
+                <figcaption>
+                  Del Artificial Intelligence Hackathon 2026 · Jessica Ruth
+                  Abigael · Team Lamport
+                </figcaption>
+              </figure>
+              <div class="work-entry-meta">
+                <span>Certificate of Appreciation</span
+                ><time datetime="2026">2026</time>
+              </div>
+              <h4>Del Artificial Intelligence Hackathon 2026</h4>
+              <p>Del Institute of Technology · Team Lamport</p>
+
+              <!-- Tambahkan href="URL_GOOGLE_DRIVE" pada tautan di bawah, hapus aria-disabled, lalu ubah teks menjadi "Lihat di Google Drive". -->
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1qxlJ43uv626-OJy3a591WnSu0v6ogHb8/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="credential-entry">
+              <figure class="credential-image">
+                <img
+                  src="assets/indonesianext-2026.png"
+                  alt="Sertifikat Top 1000 Selected Participants – IndonesiaNEXT 2026 untuk Jessica Ruth Abigael"
+                  width="640"
+                  height="420"
+                  loading="lazy"
+                />
+                <figcaption>
+                  Top 1000 Selected Participants – IndonesiaNEXT 2026 ? Jessica
+                  Ruth Abigael
+                </figcaption>
+              </figure>
+              <div class="work-entry-meta">
+                <span>Certificate of Appreciation</span
+                ><time datetime="2026">2026</time>
+              </div>
+              <h4>Top 1000 Selected Participants – IndonesiaNEXT 2026</h4>
+              <p>Telkomsel · AI-Driven Digital Talents</p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1SVfLomPhAE02uR-kX7rl7CXeS7T04kr3/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="credential-entry">
+              <figure class="credential-image">
+                <img
+                  src="assets/it-festival-2025.jpg"
+                  alt="Sertifikat IT Festival 2025 untuk Jessica Ruth Abigael"
+                  width="640"
+                  height="420"
+                  loading="lazy"
+                />
+                <figcaption>IT Festival 2025 ? Jessica Ruth Abigael</figcaption>
+              </figure>
+              <div class="work-entry-meta">
+                <span>Certificate of Appreciation</span
+                ><time datetime="2025">2025</time>
+              </div>
+              <h4>IT Festival 2025</h4>
+              <p>Himavo Micro IT · IPB University</p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1NvD883W1MaZSe3Hnmw9_M1aYdEUjexFY/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="credential-entry">
+              <figure class="credential-image">
+                <img
+                  src="assets/gemastik-xviii-2025.jpg"
+                  alt="Sertifikat GEMASTIK XVIII 2025 – National Competition untuk Jessica Ruth Abigael"
+                  width="640"
+                  height="420"
+                  loading="lazy"
+                />
+                <figcaption>
+                  GEMASTIK XVIII 2025 – National Competition ? Jessica Ruth
+                  Abigael
+                </figcaption>
+              </figure>
+              <div class="work-entry-meta">
+                <span>Certificate of Appreciation</span
+                ><time datetime="2025">2025</time>
+              </div>
+              <h4>GEMASTIK XVIII 2025 – National Competition</h4>
+              <p>
+                Ministry of Higher Education, Science, and Technology · Telkom
+                University
+              </p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1PtJrHE1yCUpWAqC6jmWEOPldl2YUPxGU/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="credential-entry">
+              <figure class="credential-image">
+                <img
+                  src="assets/intro-software-engineering.png"
+                  alt="Sertifikat Intro to Software Engineering untuk Jessica Ruth Abigael"
+                  width="640"
+                  height="420"
+                  loading="lazy"
+                />
+                <figcaption>
+                  Intro to Software Engineering ? Jessica Ruth Abigael
+                </figcaption>
+              </figure>
+              <div class="work-entry-meta">
+                <span>Certification</span><time datetime="2026">2026</time>
+              </div>
+              <h4>Intro to Software Engineering</h4>
+              <p>RevoU</p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1mDUuKr9-xImN_AMGRNRP09v0M_UWg_84/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="credential-entry">
+              <figure class="credential-image">
+                <img
+                  src="assets/ai-fundamentals.png"
+                  alt="Sertifikat AI Fundamentals untuk Jessica Ruth Abigael"
+                  width="640"
+                  height="420"
+                  loading="lazy"
+                />
+                <figcaption>AI Fundamentals ? Jessica Ruth Abigael</figcaption>
+              </figure>
+              <div class="work-entry-meta">
+                <span>Certification</span><time datetime="2026">2026</time>
+              </div>
+              <h4>AI Fundamentals</h4>
+              <p>Google Coursera</p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1RxPzgaJWaQn4_nJMWJ7ps-AeFm7Ns3AQ/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="credential-entry">
+              <figure class="credential-image">
+                <img
+                  src="assets/ibm-generative-ai.png"
+                  alt="Sertifikat Use Generative AI for Software Development untuk Jessica Ruth Abigael"
+                  width="640"
+                  height="420"
+                  loading="lazy"
+                />
+                <figcaption>
+                  Use Generative AI for Software Development ? Jessica Ruth
+                  Abigael
+                </figcaption>
+              </figure>
+              <div class="work-entry-meta">
+                <span>Certification</span><time datetime="2025">2025</time>
+              </div>
+              <h4>Use Generative AI for Software Development</h4>
+              <p>IBM SkillsBuild</p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/11_O3GaodbQp1k4DH6De_VSfTnBLvE62u/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="credential-entry">
+              <figure class="credential-image">
+                <img
+                  src="assets/belajar-dasar-ai.png"
+                  alt="Sertifikat Belajar Dasar AI (Artificial Intelligence Fundamentals) untuk Jessica Ruth Abigael"
+                  width="640"
+                  height="420"
+                  loading="lazy"
+                />
+                <figcaption>
+                  Belajar Dasar AI (Artificial Intelligence Fundamentals) ?
+                  Jessica Ruth Abigael
+                </figcaption>
+              </figure>
+              <div class="work-entry-meta">
+                <span>Certification</span><time datetime="2025">2025</time>
+              </div>
+              <h4>Belajar Dasar AI (Artificial Intelligence Fundamentals)</h4>
+              <p>Dicoding Indonesia</p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/10RGNTF35hDZwko5K2ORJV_qF69cuqPV-/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="credential-entry">
+              <figure class="credential-image">
+                <img
+                  src="assets/generative-ai-fundamentals.png"
+                  alt="Sertifikat Generative AI Fundamentals untuk Jessica Ruth Abigael"
+                  width="640"
+                  height="420"
+                  loading="lazy"
+                />
+                <figcaption>
+                  Generative AI Fundamentals ? Jessica Ruth Abigael
+                </figcaption>
+              </figure>
+              <div class="work-entry-meta">
+                <span>Certification</span><time datetime="2025">2025</time>
+              </div>
+              <h4>Generative AI Fundamentals</h4>
+              <p>Dicoding Indonesia</p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1Y2BNjZM9GDMRwGR_-XZqopxTPdPYIOpS/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="credential-entry">
+              <figure class="credential-image">
+                <img
+                  src="assets/generative-ai-fundamentals.png"
+                  alt="Sertifikat Introduction to Generative AI untuk Jessica Ruth Abigael"
+                  width="640"
+                  height="420"
+                  loading="lazy"
+                />
+                <figcaption>
+                  Introduction to Generative AI ? Jessica Ruth Abigael
+                </figcaption>
+              </figure>
+              <div class="work-entry-meta">
+                <span>Certification</span><time datetime="2025">2025</time>
+              </div>
+              <h4>Introduction to Generative AI</h4>
+              <p>Dicoding Indonesia</p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1Y2BNjZM9GDMRwGR_-XZqopxTPdPYIOpS/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="credential-entry">
+              <figure class="credential-image">
+                <img
+                  src="assets/idcamp-2025.jpg"
+                  alt="Foto Jessica Ruth Abigael untuk IDCamp 2025 Scholarship Recipient ? AI Front-End Developer Learning Path"
+                  width="640"
+                  height="420"
+                  loading="lazy"
+                />
+                <figcaption>IDCamp 2025 ? Jessica Ruth Abigael</figcaption>
+              </figure>
+              <div class="work-entry-meta">
+                <span>Courses &amp; Training</span
+                ><time datetime="2025">2025</time>
+              </div>
+              <h4>
+                IDCamp 2025 Scholarship Recipient – AI Front-End Developer
+                Learning Path
+              </h4>
+              <p>IDCamp · Dicoding</p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/drive/folders/1fIeFLh-oCcYvUHzrwQR72bD8iP8NzdXN?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+          </div>
+        </div>
+        <div id="projects-panel">
+          <h3 class="no-js-label">Projects</h3>
+          <p class="work-panel-intro">09 proyek · 2024–2026</p>
+          <div class="work-grid">
+            <article class="work-entry">
+              <div class="work-entry-meta">
+                <span>PROJECT / 01</span><time datetime="2026">2026</time>
+              </div>
+              <h3>Distributed E-Learning Platform</h3>
+              <p class="work-contribution">
+                <span>Kontribusi</span>System Development &amp; Database
+                Integration
+              </p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/14N_Ulvqxrre6fiyWm7npAILLgranhcL8/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="work-entry">
+              <div class="work-entry-meta">
+                <span>PROJECT / 02</span><time datetime="2026">2026</time>
+              </div>
+              <h3>Network Infrastructure &amp; Server Automation</h3>
+              <p class="work-contribution">
+                <span>Kontribusi</span>Network &amp; System Administrator
+              </p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1BZba1wY2SZgj92a8QXpdgqDgfuShfe_N/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="work-entry">
+              <div class="work-entry-meta">
+                <span>PROJECT / 03</span><time datetime="2026">2026</time>
+              </div>
+              <h3>UNO Mini – Linux Console Game</h3>
+              <p class="work-contribution">
+                <span>Kontribusi</span>C Programmer &amp; Game Developer
+              </p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1ei1QvF3W4MoMtA64wOACCOPt1wN33SyO/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="work-entry">
+              <div class="work-entry-meta">
+                <span>PROJECT / 04</span><time datetime="2026">2026</time>
+              </div>
+              <h3>
+                LoRa-Based Vessel Tracking System with Delay Tolerant Networking
+                (DTN)
+              </h3>
+              <p class="work-contribution">
+                <span>Kontribusi</span>System Analyst &amp; Software Developer
+              </p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1LfI1XcSl1GOdwLgDh2Q-E25wuJmO_IOS/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="work-entry">
+              <div class="work-entry-meta">
+                <span>PROJECT / 05</span><time datetime="2026">2026</time>
+              </div>
+              <h3>Peluang Setara – Inclusive Employment Platform</h3>
+              <p class="work-contribution">
+                <span>Kontribusi</span>Front-End Developer – Web Development
+                Project
+              </p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1CJ9Lkn4Lr_t7WyYv3a0HVcu4hqaACUYp/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="work-entry">
+              <div class="work-entry-meta">
+                <span>PROJECT / 06</span><time datetime="2025">2025</time>
+              </div>
+              <h3>Lake Toba Tourism Information System</h3>
+              <p class="work-contribution">
+                <span>Kontribusi</span>System Analyst
+              </p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1q415wd16gbQeae-SuXh5iY14VtJ3QNP4/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="work-entry">
+              <div class="work-entry-meta">
+                <span>PROJECT / 07</span><time datetime="2025">2025</time>
+              </div>
+              <h3>Rasa Toba – Digital Culinary Platform</h3>
+              <p class="work-contribution">
+                <span>Kontribusi</span>UI/UX Designer
+              </p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/12v3GtNo7wZ-WVroQNgWJ4HhgC75roQw2/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="work-entry">
+              <div class="work-entry-meta">
+                <span>PROJECT / 08</span><time datetime="2025">2025</time>
+              </div>
+              <h3>Second-Hand Electronics Quality Management System</h3>
+              <p class="work-contribution">
+                <span>Kontribusi</span>Full-Stack Developer
+              </p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/1yYPrdGCUpNsJoru8cbFbOhXz84SSpEVb/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+            <article class="work-entry">
+              <div class="work-entry-meta">
+                <span>PROJECT / 09</span><time datetime="2024">2024</time>
+              </div>
+              <h3>Inventory Management System</h3>
+              <p class="work-contribution">
+                <span>Kontribusi</span>C Programming
+              </p>
+              <a
+                class="work-drive-link"
+                href="https://drive.google.com/file/d/13J9ymB9th4rz3sJlL0rAY2Jlih17NeNF/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lihat di Google Drive
+                <span aria-hidden="true">&#8599;</span></a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="section wrap contact reveal">
+        <p class="eyebrow">04 / THE NEXT CONVERSATION</p>
+        <h2>Let’s Connect<span>.</span></h2>
+        <p>
+          Saya terbuka untuk berdiskusi, belajar bersama, dan mengenal peluang
+          baru di bidang teknologi.
+        </p>
+        <div class="contacts">
+          <a class="contact-item" data-contact="email" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=jessicaruthylie%40gmail.com" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m3 6 9 7 9-7" />
+            </svg>
+            <div>
+              <strong>Email</strong><span>jessicaruthylie@gmail.com</span>
+            </div>
+          </a>
+          <div class="contact-item" data-contact="github">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M9 19c-4 1-4-2-6-2m14 5v-4c0-1-.4-2-1-2.5 3-.4 6-1.5 6-6.5 0-1.5-.5-3-1.5-4 .2-1 .2-2-.2-3 0 0-1.3-.3-4.3 1.5a15 15 0 0 0-8 0C5 1.7 3.7 2 3.7 2c-.4 1-.4 2-.2 3C2.5 6 2 7.5 2 9c0 5 3 6.1 6 6.5-.6.5-1 1.5-1 2.5v4"
+              />
+            </svg>
+            <div><strong>GitHub</strong><span>[Username GitHub]</span></div>
+          </div>
+          <a class="contact-item" data-contact="linkedin" href="https://www.linkedin.com/in/jessicaruthabigael" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <path d="M7 10v7m0-10v.1M11 17v-7m0 3c0-4 6-4 6 0v4" />
+            </svg>
+            <div><strong>LinkedIn</strong><span>@jessicaruthabigael</span></div>
+          </a>
+          <a class="contact-item" data-contact="whatsapp" href="https://wa.me/6283151365014" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-4.9a8.5 8.5 0 1 1 15.9-4.1Z" />
+              <path d="m8 7 1.5-.5 1.2 2.6-1.1 1.1a9 9 0 0 0 4.2 4.2l1.1-1.1 2.6 1.2L17 16c-.4.9-1.4 1.2-2.3.9A13 13 0 0 1 7.1 9.3C6.8 8.4 7.1 7.4 8 7Z" />
+            </svg>
+            <div><strong>WhatsApp</strong><span>+6283151365014</span></div>
+          </a>
+        </div>
+      </section>
+    </main>
+    <footer class="wrap">
+      <span
+        >© <span id="year">2026</span> Jessica Ruth Abigael. All rights
+        reserved.</span
+      ><a href="#home" class="brand">Jessica<span>.dev</span></a>
+    </footer>
+    <a class="back-top" href="#home" aria-label="Kembali ke atas" hidden>↑</a>
+  </body>
+</html>
