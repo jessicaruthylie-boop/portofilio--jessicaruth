@@ -62,64 +62,6 @@ document.querySelectorAll('.credential-image img').forEach(img => {
     trigger?.focus({ preventScroll: true });
   });
 })();
-// Unified certificate carousel; all entries remain readable without JavaScript.
-(() => {
-  const stack = document.querySelector('#certificate-stack');
-  if (!stack) return;
-  const cards = [...stack.querySelectorAll('.credential-entry')];
-  const controls = document.querySelector('.certificate-carousel-controls');
-  const position = controls.querySelector('.certificate-position');
-  const indicators = document.createElement('div');
-  indicators.className = 'certificate-indicators';
-  indicators.setAttribute('role', 'group');
-  indicators.setAttribute('aria-label', 'Pilih sertifikat');
-  const dots = cards.map((card, index) => {
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.setAttribute('aria-label', card.querySelector('h4').textContent);
-    dot.addEventListener('click', () => select(index));
-    indicators.append(dot);
-    return dot;
-  });
-  stack.after(indicators);
-  let current = 0;
-  function select(index) {
-    current = (index + cards.length) % cards.length;
-    cards.forEach((card, i) => {
-      let distance = (i - current + cards.length) % cards.length;
-      if (distance > cards.length / 2) distance -= cards.length;
-      card.style.setProperty('--card-offset', Math.max(-2, Math.min(2, distance)));
-      card.style.setProperty('--card-depth', Math.min(2, Math.abs(distance)));
-      card.style.zIndex = String(5 - Math.abs(distance));
-      card.classList.toggle('is-current', distance === 0);
-      card.classList.toggle('is-outside', Math.abs(distance) > 2);
-      card.inert = distance !== 0;
-      card.setAttribute('aria-hidden', String(distance !== 0));
-    });
-    position.textContent = String(current + 1).padStart(2, '0') + ' / ' + cards.length;
-    dots.forEach((dot, index) => dot.setAttribute('aria-pressed', String(index === current)));
-  }
-  stack.classList.add('is-carousel');
-  controls.hidden = false;
-  controls.querySelectorAll('button').forEach(button => button.addEventListener('click', () => select(current + Number(button.dataset.certificateStep))));
-  stack.addEventListener('keydown', event => {
-    if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
-    event.preventDefault();
-    const hadFocus = stack.contains(document.activeElement);
-    select(current + (event.key === 'ArrowRight' ? 1 : -1));
-    if (hadFocus) stack.focus({ preventScroll: true });
-  });
-  let touchStart;
-  stack.addEventListener('touchstart', event => { touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY }; }, { passive: true });
-  stack.addEventListener('touchend', event => {
-    if (!touchStart) return;
-    const dx = event.changedTouches[0].clientX - touchStart.x;
-    const dy = event.changedTouches[0].clientY - touchStart.y;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) select(current + (dx < 0 ? 1 : -1));
-    touchStart = null;
-  }, { passive: true });
-  select(0);
-})();
 // Each credential group manages its own featured card and swap animation.
 document.querySelectorAll('[aria-labelledby="appreciation-title"] .credential-grid, [aria-labelledby="certifications-title"] .credential-grid').forEach(grid => {
   const cards = [...grid.querySelectorAll('.credential-entry')];
